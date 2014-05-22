@@ -1,0 +1,2879 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: VideoTube v1.0.2.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-04-10 01:17:26+0000\n"
+"Last-Translator: admin <nttoanbrvt@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Vietnamese\n"
+"X-Poedit-Country: VIET NAM\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../../../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: 404.php:8
+#@ mars
+msgid "This is somewhat embarrassing, isn't it?"
+msgstr ""
+
+#: 404.php:11
+#@ mars
+msgid "It seems we can not find what you are looking for. Perhaps searching can help."
+msgstr ""
+
+#: archive-video.php:8
+#@ mars
+msgid "Video Browser"
+msgstr ""
+
+#: archive-video.php:33
+#: channel.php:49
+#: includes/Mars_ShortcodeListVideos.php:114
+#: taxonomy-categories.php:32
+#: taxonomy-video_tag.php:31
+#@ mars
+msgid "Oop...nothing."
+msgstr ""
+
+#: archive.php:7
+#@ mars
+msgid "Archive"
+msgstr ""
+
+#: archive.php:14
+#: category.php:15
+#: includes/Mars_Author_Page.php:72
+#: index.php:11
+#: tag.php:15
+#: tpl-blog.php:18
+#@ mars
+msgid "&larr; Older"
+msgstr ""
+
+#: archive.php:14
+#: category.php:15
+#: includes/Mars_Author_Page.php:72
+#: index.php:11
+#: tag.php:15
+#: tpl-blog.php:18
+#@ mars
+msgid "Newer &rarr;"
+msgstr ""
+
+#: archive.php:17
+#: author.php:20
+#: category.php:18
+#: index.php:14
+#: tag.php:18
+#: tpl-blog.php:22
+#@ mars
+msgid "Not found."
+msgstr ""
+
+#: comments.php:32
+#@ twentytwelve
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:33
+#@ twentytwelve
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:34
+#@ twentytwelve
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:39
+#@ mars
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:48
+#@ mars
+msgid "Add your comment"
+msgstr ""
+
+#: comments.php:49
+#, php-format
+#@ mars
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: comments.php:50
+#@ mars
+msgid "Cancel Reply"
+msgstr ""
+
+#: comments.php:51
+#@ mars
+msgid "Submit"
+msgstr ""
+
+#: comments.php:54
+#@ mars
+msgid "Comment"
+msgstr ""
+
+#: comments.php:60
+#, php-format
+#@ mars
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: comments.php:66
+#, php-format
+#@ mars
+msgid "Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+msgstr ""
+
+#: comments.php:73
+#@ mars
+msgid "Your email address will not be published."
+msgstr ""
+
+#: comments.php:81
+#: includes/Mars_Subscribox_Widget.php:81
+#@ mars
+msgid "Your Name"
+msgstr ""
+
+#: comments.php:82
+#@ mars
+msgid "Enter name"
+msgstr ""
+
+#: comments.php:87
+#@ mars
+msgid "Your Email"
+msgstr ""
+
+#: comments.php:88
+#@ mars
+msgid "Enter Email"
+msgstr ""
+
+#: comments.php:93
+#@ mars
+msgid "Website"
+msgstr ""
+
+#: comments.php:94
+#@ mars
+msgid "Enter Website"
+msgstr ""
+
+#: framework/ReduxCore/extensions/customizer/extension_customizer.php:402
+#: framework/ReduxCore/framework.php:1577
+#@ redux-framework
+msgid "You have changes that are not saved. Would you like to save them now?"
+msgstr ""
+
+#: framework/ReduxCore/extensions/customizer/extension_customizer.php:403
+#: framework/ReduxCore/framework.php:1578
+#@ redux-framework
+msgid "Are you sure? Resetting will lose all custom values."
+msgstr ""
+
+#: framework/ReduxCore/extensions/customizer/extension_customizer.php:404
+#: framework/ReduxCore/framework.php:1580
+#@ redux-framework
+msgid "Your current options will be replaced with the values of this preset. Would you like to proceed?"
+msgstr ""
+
+#: framework/ReduxCore/extensions/customizer/extension_customizer.php:435
+#@ redux-framework
+msgid "You have changes that are not saved.  Would you like to save them now?"
+msgstr ""
+
+#: framework/ReduxCore/extensions/customizer/extension_customizer.php:436
+#@ redux-framework
+msgid "Are you sure?  Resetting will lose all custom values."
+msgstr ""
+
+#: framework/ReduxCore/extensions/customizer/extension_customizer.php:437
+#@ redux-framework
+msgid "Your current options will be replaced with the values of this preset.  Would you like to proceed?"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:185
+#, php-format
+#@ redux-framework
+msgid "Options panel created using %1$s"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:185
+#@ redux-framework
+msgid "Redux Framework"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:188
+#: framework/ReduxCore/framework.php:191
+#: framework/ReduxCore/framework.php:1225
+#@ redux-framework
+#@ redux-framework-demo
+msgid "Options"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:422
+#@ redux-framework
+msgid "Dismiss"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:1169
+#: framework/ReduxCore/framework.php:1170
+#: framework/ReduxCore/framework.php:2671
+#: framework/ReduxCore/framework.php:2730
+#@ redux-framework
+msgid "System Info"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:1579
+#@ redux-framework
+msgid "Are you sure? Resetting will lose all custom values in this section."
+msgstr ""
+
+#: framework/ReduxCore/framework.php:1581
+#@ redux-framework
+msgid "Please Wait"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:1716
+#@ redux-framework-demo
+msgid "Hints"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:1717
+#@ redux-framework-demo
+msgid "<p></p>"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:1821
+#@ redux-framework
+msgid "Default"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:2528
+#@ redux-framework
+msgid "Warning- This options panel will not work properly without javascript!"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:2590
+#@ redux-framework
+msgid "Expand"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:2592
+#: framework/ReduxCore/framework.php:2780
+#@ redux-framework
+msgid "Save Changes"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:2594
+#: framework/ReduxCore/framework.php:2782
+#@ redux-framework
+msgid "Reset Section"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:2596
+#: framework/ReduxCore/framework.php:2784
+#@ redux-framework
+msgid "Reset All"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:2599
+#: framework/ReduxCore/framework.php:2787
+#@ redux-framework
+msgid "Working..."
+msgstr ""
+
+#: framework/ReduxCore/framework.php:2610
+#@ redux-framework
+msgid "Settings Imported!"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:2616
+#@ redux-framework
+msgid "Settings Saved!"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:2623
+#@ redux-framework
+msgid "Settings have changed, you should save them!"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:2624
+#@ redux-framework
+msgid "error(s) were found!"
+msgstr ""
+
+#: framework/ReduxCore/framework.php:2625
+#@ redux-framework
+msgid "warning(s) were found!"
+msgstr ""
+
+#: framework/ReduxCore/inc/debug.php:41
+#: framework/ReduxCore/inc/debug.php:69
+#: framework/ReduxCore/inc/debug.php:76
+#: framework/ReduxCore/inc/debug.php:77
+#@ redux-framework
+msgid "Options Object"
+msgstr ""
+
+#: framework/ReduxCore/inc/debug.php:54
+#@ redux-framework
+msgid "Show Object in Javascript Console Object"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/background/field_background.php:118
+#: framework/ReduxCore/inc/fields/color/field_color.php:72
+#: framework/ReduxCore/inc/fields/color_gradient/field_color_gradient.php:81
+#: framework/ReduxCore/inc/fields/color_gradient/field_color_gradient.php:91
+#: framework/ReduxCore/inc/fields/color_rgba/field_color_rgba.php:85
+#@ redux-framework
+msgid "Transparent"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/background/field_background.php:135
+#@ redux-framework
+msgid "Background Repeat"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/background/field_background.php:151
+#@ redux-framework
+msgid "Background Clip"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/background/field_background.php:167
+#@ redux-framework
+msgid "Background Origin"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/background/field_background.php:182
+#@ redux-framework
+msgid "Background Size"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/background/field_background.php:197
+#@ redux-framework
+msgid "Background Attachment"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/background/field_background.php:217
+#@ redux-framework
+msgid "Background Position"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/background/field_background.php:272
+#: framework/ReduxCore/inc/fields/media/field_media.php:116
+#@ redux-framework
+msgid "No media selected"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/background/field_background.php:306
+#: framework/ReduxCore/inc/fields/media/field_media.php:155
+#: framework/ReduxCore/inc/fields/slides/field_slides.php:121
+#: framework/ReduxCore/inc/fields/slides/field_slides.php:190
+#@ redux-framework
+msgid "Upload"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/background/field_background.php:312
+#: framework/ReduxCore/inc/fields/media/field_media.php:161
+#: framework/ReduxCore/inc/fields/multi_text/field_multi_text.php:75
+#: framework/ReduxCore/inc/fields/multi_text/field_multi_text.php:79
+#: framework/ReduxCore/inc/fields/multi_text/field_multi_text.php:82
+#: framework/ReduxCore/inc/fields/slides/field_slides.php:128
+#: framework/ReduxCore/inc/fields/slides/field_slides.php:192
+#@ redux-framework
+msgid "Remove"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/border/field_border.php:112
+#: framework/ReduxCore/inc/fields/spacing/field_spacing.php:151
+#@ redux-framework
+msgid "All"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/border/field_border.php:125
+#: framework/ReduxCore/inc/fields/spacing/field_spacing.php:175
+#@ redux-framework
+msgid "Top"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/border/field_border.php:132
+#: framework/ReduxCore/inc/fields/spacing/field_spacing.php:182
+#@ redux-framework
+msgid "Right"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/border/field_border.php:139
+#: framework/ReduxCore/inc/fields/spacing/field_spacing.php:189
+#@ redux-framework
+msgid "Bottom"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/border/field_border.php:146
+#: framework/ReduxCore/inc/fields/spacing/field_spacing.php:196
+#@ redux-framework
+msgid "Left"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/border/field_border.php:162
+#@ redux-framework
+msgid "Border style"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/color_gradient/field_color_gradient.php:73
+#@ redux-framework
+msgid "From "
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/color_gradient/field_color_gradient.php:84
+#@ redux-framework
+msgid "To "
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/dimensions/field_dimensions.php:121
+#@ redux-framework
+msgid "Width"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/dimensions/field_dimensions.php:137
+#@ redux-framework
+msgid "height"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/dimensions/field_dimensions.php:149
+#: framework/ReduxCore/inc/fields/dimensions/field_dimensions.php:150
+#: framework/ReduxCore/inc/fields/spacing/field_spacing.php:206
+#: framework/ReduxCore/inc/fields/spacing/field_spacing.php:207
+#@ redux-framework
+msgid "Units"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/gallery/field_gallery.php:77
+#@ redux-framework
+msgid "Add/Edit Gallery"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/gallery/field_gallery.php:78
+#@ redux-framework
+msgid "Clear Gallery"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/group/field_group.php:82
+#@ redux-framework
+msgid "New "
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/group/field_group.php:125
+#@ redux-framework
+msgid "Delete"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/group/field_group.php:129
+#@ redux-framework
+msgid "Add"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:77
+#@ redux-framework
+msgid "Import / Export Options"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:80
+#@ redux-framework
+msgid "Import Options"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:81
+#@ redux-framework
+msgid "Import from file"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:81
+#@ redux-framework
+msgid "Import from URL"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:85
+#@ redux-framework
+msgid "Input your backup file below and hit Import to restore your sites options from a backup."
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:93
+#@ redux-framework
+msgid "Input the URL to another sites options set and hit Import to load the options from that site."
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:99
+#@ redux-framework
+msgid "Import"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:99
+#@ redux-framework
+msgid "WARNING! This will overwrite all existing option values, please proceed with caution!"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:102
+#@ redux-framework
+msgid "Export Options"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:105
+#@ redux-framework
+msgid "Here you can copy/download your current option settings. Keep this safe as you can use it as a backup should anything go wrong, or you can use it to restore your settings on this site (or any other site)."
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:109
+#@ redux-framework
+msgid "Copy"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:109
+#@ redux-framework
+msgid "Download"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:109
+#@ redux-framework
+msgid "Copy Link"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:156
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:165
+#: framework/ReduxCore/inc/fields/import_export/import_export.php:166
+#@ redux-framework
+msgid "Import / Export"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/link_color/field_link_color.php:91
+#@ redux-framework
+msgid "Regular"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/link_color/field_link_color.php:95
+#@ redux-framework
+msgid "Hover"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/link_color/field_link_color.php:99
+#@ redux-framework
+msgid "Visited"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/link_color/field_link_color.php:103
+#@ redux-framework
+msgid "Active"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/multi_text/field_multi_text.php:65
+#@ redux-framework
+msgid "Add More"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/password/field_password.php:55
+#: includes/Mars_LoginRegister_Template.php:68
+#: includes/Mars_LoginRegister_Template.php:99
+#@ redux-framework
+#@ mars
+msgid "Password"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/password/field_password.php:56
+#: includes/Mars_LoginRegister_Template.php:67
+#: includes/Mars_LoginRegister_Template.php:91
+#@ redux-framework
+#@ mars
+msgid "Username"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/select/field_select.php:79
+#: framework/ReduxCore/inc/fields/select_image/field_select_image.php:58
+#@ redux-framework
+msgid "Select an item"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/select/field_select.php:120
+#: framework/ReduxCore/inc/fields/select_image/field_select_image.php:133
+#@ redux-framework
+msgid "No items of this type were found."
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/slides/field_slides.php:133
+#: framework/ReduxCore/inc/fields/slides/field_slides.php:197
+#@ redux-framework
+msgid "Title"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/slides/field_slides.php:135
+#: framework/ReduxCore/inc/fields/slides/field_slides.php:199
+#@ redux-framework
+msgid "Description"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/slides/field_slides.php:137
+#: framework/ReduxCore/inc/fields/slides/field_slides.php:201
+#@ redux-framework
+msgid "URL"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/slides/field_slides.php:168
+#: framework/ReduxCore/inc/fields/slides/field_slides.php:231
+#@ redux-framework
+msgid "Delete Slide"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/slides/field_slides.php:234
+#@ redux-framework
+msgid "Add Slide"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/switch/field_switch.php:42
+#@ redux-framework
+msgid "On"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/switch/field_switch.php:49
+#@ redux-framework
+msgid "Off"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:163
+#@ redux-framework
+msgid "Font family"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:190
+#@ redux-framework
+msgid "Standard Fonts"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:241
+#@ redux-framework
+msgid "Backup Font Family"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:261
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:265
+#@ redux-framework
+msgid "Font style"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:265
+#@ redux-framework
+msgid "Style"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:294
+#@ redux-framework
+msgid "Font subsets"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:295
+#@ redux-framework
+msgid "Subsets"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:295
+#@ redux-framework
+msgid "Font script"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:312
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:313
+#@ redux-framework
+msgid "Text Align"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:336
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:337
+#@ redux-framework
+msgid "Text Transform"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:366
+#@ redux-framework
+msgid "Size"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:374
+#@ redux-framework
+msgid "Height"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:382
+#@ redux-framework
+msgid "Word Spacing"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:391
+#@ redux-framework
+msgid "Letter Spacing"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:408
+#@ redux-framework
+msgid "Font color"
+msgstr ""
+
+#: framework/ReduxCore/inc/fields/typography/field_typography.php:750
+#@ redux-framework
+msgid "Google Webfonts"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:111
+#@ redux-framework
+msgid "Help improve Our Panel"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:112
+#@ redux-framework
+msgid "Please helps us improve our panel by allowing us to gather anonymous usage stats so we know which configurations, plugins and themes to test to ensure compatability."
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:117
+#@ redux-framework
+msgid "Allow tracking"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:122
+#@ redux-framework
+msgid "Do not allow tracking"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:132
+#@ redux-framework
+msgid "Welcome to the Redux Demo Panel"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:133
+#@ redux-framework
+msgid "Getting Started"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:133
+#, php-format
+#@ redux-framework
+msgid "This panel demonstrates the many features of Redux.  Before digging in, we suggest you get up to speed by reviewing %1$s."
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:133
+#@ redux-framework
+msgid "our documentation"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:134
+#@ redux-framework
+msgid "Redux Extensions"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:134
+#, php-format
+#@ redux-framework
+msgid "Did you know Redux has extensions, which enhances its features?  Visit our %1$s to learn more!"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:134
+#@ redux-framework
+msgid "extensions directory"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:135
+#@ redux-framework
+msgid "Like Redux?"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:135
+#, php-format
+#@ redux-framework
+msgid "If so, please %1$s and consider making a %2$s to keep development of Redux moving forward."
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:135
+#@ redux-framework
+msgid "leave us a favorable review on WordPress.org"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:135
+#@ redux-framework
+msgid "donation"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:136
+#@ redux-framework
+msgid "Newsletter"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:136
+#@ redux-framework
+msgid "If you'd like to keep up to with all things Redux, please subscribe to our newsletter"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:137
+#@ redux-framework
+msgid "Email address"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:137
+#: framework/config.php:606
+#: includes/Mars_Subscribox_Widget.php:76
+#@ redux-framework
+#@ mars
+msgid "Subscribe"
+msgstr ""
+
+#: framework/ReduxCore/inc/tracking.php:146
+#: includes/Mars_Subscribox_Widget.php:96
+#@ redux-framework
+#@ mars
+msgid "Close"
+msgstr ""
+
+#: framework/ReduxCore/inc/validation/color/validation_color.php:15
+#: framework/ReduxCore/inc/validation/color_rgba/validation_color_rgba.php:15
+#: framework/ReduxCore/inc/validation/colorrgba/validation_colorrgba.php:15
+#@ redux-framework
+msgid "This field must be a valid color value."
+msgstr ""
+
+#: framework/ReduxCore/inc/validation/comma_numeric/validation_comma_numeric.php:15
+#@ redux-framework
+msgid "You must provide a comma separated list of numerical values for this option."
+msgstr ""
+
+#: framework/ReduxCore/inc/validation/date/validation_date.php:15
+#@ redux-framework
+msgid "This field must be a valid date."
+msgstr ""
+
+#: framework/ReduxCore/inc/validation/email/validation_email.php:15
+#: framework/ReduxCore/inc/validation/email_not_empty/validation_email_not_empty.php:15
+#@ redux-framework
+msgid "You must provide a valid email for this option."
+msgstr ""
+
+#: framework/ReduxCore/inc/validation/no_html/validation_no_html.php:15
+#@ redux-framework
+msgid "You must not enter any HTML in this field, all HTML tags have been removed."
+msgstr ""
+
+#: framework/ReduxCore/inc/validation/no_special_chars/validation_no_special_chars.php:15
+#@ redux-framework
+msgid "You must not enter any special characters in this field, all special characters have been removed."
+msgstr ""
+
+#: framework/ReduxCore/inc/validation/not_empty/validation_not_empty.php:15
+#@ redux-framework
+msgid "This field cannot be empty. Please provide a value."
+msgstr ""
+
+#: framework/ReduxCore/inc/validation/numeric/validation_numeric.php:15
+#@ redux-framework
+msgid "You must provide a numerical value for this option."
+msgstr ""
+
+#: framework/ReduxCore/inc/validation/url/validation_url.php:15
+#@ redux-framework
+msgid "You must provide a valid URL for this option."
+msgstr ""
+
+#: framework/class.redux-plugin.php:277
+#@ redux-framework
+msgid "Redux Framework has an embedded demo."
+msgstr ""
+
+#: framework/class.redux-plugin.php:277
+#@ redux-framework
+msgid "Click here to activate the sample config file."
+msgstr ""
+
+#: framework/class.redux-plugin.php:381
+#@ redux-framework
+msgid "Github Repo"
+msgstr ""
+
+#: framework/class.redux-plugin.php:382
+#@ redux-framework
+msgid "Issue Tracker"
+msgstr ""
+
+#: framework/class.redux-plugin.php:387
+#@ redux-framework
+msgid "Deactivate Demo Mode"
+msgstr ""
+
+#: framework/class.redux-plugin.php:389
+#@ redux-framework
+msgid "Activate Demo Mode"
+msgstr ""
+
+#: framework/config.php:99
+#@ redux-framework-demo
+msgid "Section via hook"
+msgstr ""
+
+#: framework/config.php:100
+#@ redux-framework-demo
+msgid "<p class=\"description\">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>"
+msgstr ""
+
+#: framework/config.php:178
+#, php-format
+#@ redux-framework-demo
+msgid "Customize &#8220;%s&#8221;"
+msgstr ""
+
+#: framework/config.php:184
+#: framework/config.php:187
+#@ default
+msgid "Current theme preview"
+msgstr ""
+
+#: framework/config.php:196
+#, php-format
+#@ redux-framework-demo
+msgid "By %s"
+msgstr ""
+
+#: framework/config.php:197
+#, php-format
+#@ redux-framework-demo
+msgid "Version %s"
+msgstr ""
+
+#: framework/config.php:198
+#@ redux-framework-demo
+msgid "Tags"
+msgstr ""
+
+#: framework/config.php:203
+#, php-format
+#@ default
+msgid "This <a href=\"%1$s\">child theme</a> requires its parent theme, %2$s."
+msgstr ""
+
+#: framework/config.php:203
+#@ redux-framework-demo
+msgid "http://codex.wordpress.org/Child_Themes"
+msgstr ""
+
+#: framework/config.php:228
+#@ mars
+msgid "General"
+msgstr ""
+
+#: framework/config.php:236
+#: framework/config.php:245
+#@ mars
+msgid "Upload any media using the WordPress native uploader"
+msgstr ""
+
+#: framework/config.php:238
+#@ mars
+msgid "Logo (194*31px)"
+msgstr ""
+
+#: framework/config.php:246
+#@ mars
+msgid "Favicon"
+msgstr ""
+
+#: framework/config.php:251
+#@ mars
+msgid "Custom CSS"
+msgstr ""
+
+#: framework/config.php:252
+#@ mars
+msgid "Paste your CSS code here, no style tag."
+msgstr ""
+
+#: framework/config.php:259
+#@ mars
+msgid "Custom JS"
+msgstr ""
+
+#: framework/config.php:260
+#@ mars
+msgid "Paste your JS code here, no script tag, eg: alert('hello world');"
+msgstr ""
+
+#: framework/config.php:266
+#@ mars
+msgid "Copyright Text"
+msgstr ""
+
+#: framework/config.php:272
+#@ mars
+msgid "Google Analytics ID"
+msgstr ""
+
+#: framework/config.php:279
+#@ mars
+msgid "Video Datetime Format"
+msgstr ""
+
+#: framework/config.php:280
+#@ mars
+msgid "Default Format"
+msgstr ""
+
+#: framework/config.php:280
+#@ mars
+msgid "VideoTube Format"
+msgstr ""
+
+#: framework/config.php:286
+#@ mars
+msgid "Video AutoPlay"
+msgstr ""
+
+#: framework/config.php:288
+#: framework/config.php:297
+#: framework/config.php:446
+#: framework/config.php:468
+#: framework/config.php:476
+#: framework/config.php:485
+#: framework/config.php:500
+#: framework/config.php:552
+#: framework/config.php:591
+#: framework/config.php:599
+#: framework/config.php:615
+#@ mars
+msgid "Yes"
+msgstr ""
+
+#: framework/config.php:289
+#: framework/config.php:298
+#: framework/config.php:447
+#: framework/config.php:469
+#: framework/config.php:477
+#: framework/config.php:486
+#: framework/config.php:501
+#: framework/config.php:553
+#: framework/config.php:592
+#: framework/config.php:600
+#: framework/config.php:616
+#@ mars
+msgid "No"
+msgstr ""
+
+#: framework/config.php:294
+#@ mars
+msgid "Enable Channel Page"
+msgstr ""
+
+#: framework/config.php:295
+#@ mars
+msgid "This feature will enable User Channel page, is used to replace for Author default page."
+msgstr ""
+
+#: framework/config.php:304
+#@ mars
+msgid "Styling Options"
+msgstr ""
+
+#: framework/config.php:309
+#@ mars
+msgid "Header Background Color"
+msgstr ""
+
+#: framework/config.php:310
+#@ mars
+msgid "Pick a background color for the header (default: #ffffff)."
+msgstr ""
+
+#: framework/config.php:318
+#@ mars
+msgid "Body Background"
+msgstr ""
+
+#: framework/config.php:319
+#@ mars
+msgid "Body background with image, color, etc."
+msgstr ""
+
+#: framework/config.php:325
+#@ mars
+msgid "Body Text"
+msgstr ""
+
+#: framework/config.php:338
+#@ mars
+msgid "Headings"
+msgstr ""
+
+#: framework/config.php:351
+#@ mars
+msgid "Menu"
+msgstr ""
+
+#: framework/config.php:364
+#@ mars
+msgid "Widget Title Background"
+msgstr ""
+
+#: framework/config.php:365
+#@ mars
+msgid "Pick a background color for the Widget title (default: #e73737), only for Right Widget."
+msgstr ""
+
+#: framework/config.php:372
+#@ mars
+msgid "Widget Title Color"
+msgstr ""
+
+#: framework/config.php:373
+#@ mars
+msgid "Pick a color for the Widget title (default: #e73737), only for Right Widget"
+msgstr ""
+
+#: framework/config.php:380
+#@ mars
+msgid "Header Navigation Background"
+msgstr ""
+
+#: framework/config.php:381
+#@ mars
+msgid "Pick a background color for the Header Navigation (Header Menu) (default: #4c5358)."
+msgstr ""
+
+#: framework/config.php:388
+#@ mars
+msgid "Header Navigation Color"
+msgstr ""
+
+#: framework/config.php:389
+#@ mars
+msgid "Pick a color for the Header Navigation (Header Menu) (default: #4c5358)."
+msgstr ""
+
+#: framework/config.php:396
+#@ mars
+msgid "Footer Background"
+msgstr ""
+
+#: framework/config.php:397
+#@ mars
+msgid "Pick a background color for the footer (default: #111111)."
+msgstr ""
+
+#: framework/config.php:404
+#@ mars
+msgid "Footer Text Color"
+msgstr ""
+
+#: framework/config.php:405
+#@ mars
+msgid "Pick a color for Text in the footer (default: #ffffff)."
+msgstr ""
+
+#: framework/config.php:412
+#@ mars
+msgid "Recaptcha"
+msgstr ""
+
+#: framework/config.php:417
+#@ mars
+msgid "Public Key"
+msgstr ""
+
+#: framework/config.php:423
+#@ mars
+msgid "Private Key"
+msgstr ""
+
+#: framework/config.php:430
+#@ mars
+msgid "Login/Register"
+msgstr ""
+
+#: framework/config.php:437
+#@ mars
+msgid "Login/Register page"
+msgstr ""
+
+#: framework/config.php:438
+#@ mars
+msgid "If this page is configured, The Login/Register default page (wp-login.php) will be replaced."
+msgstr ""
+
+#: framework/config.php:439
+#@ mars
+msgid "Place [videotube_login] shortcode in Login page to display the Login/Register form."
+msgstr ""
+
+#: framework/config.php:444
+#: framework/config.php:597
+#@ mars
+msgid "Enable Recaptcha"
+msgstr ""
+
+#: framework/config.php:452
+#@ mars
+msgid "Optimization"
+msgstr ""
+
+#: framework/config.php:454
+#@ mars
+msgid "At this section, you can enable/disable SEO mode, HTTP compression."
+msgstr ""
+
+#: framework/config.php:459
+#@ mars
+msgid "Video Slug"
+msgstr ""
+
+#: framework/config.php:461
+#@ mars
+msgid "Settings/Permalink"
+msgstr ""
+
+#: framework/config.php:466
+#@ mars
+msgid "Enable SEO mode."
+msgstr ""
+
+#: framework/config.php:474
+#@ mars
+msgid "Enable HTTP Compression."
+msgstr ""
+
+#: framework/config.php:482
+#@ mars
+msgid "Hide Admin Top Bar."
+msgstr ""
+
+#: framework/config.php:483
+#@ mars
+msgid "Only admin can see Admin Bar"
+msgstr ""
+
+#: framework/config.php:491
+#@ mars
+msgid "Socials"
+msgstr ""
+
+#: framework/config.php:498
+#@ mars
+msgid "Allow Guest to Like"
+msgstr ""
+
+#: framework/config.php:505
+#: includes/functions.php:39
+#@ mars
+msgid "Facebook"
+msgstr ""
+
+#: framework/config.php:507
+#@ mars
+msgid "Facebook Profile or Fanpage URL"
+msgstr ""
+
+#: framework/config.php:511
+#@ mars
+msgid "Twitter"
+msgstr ""
+
+#: framework/config.php:513
+#@ mars
+msgid "Twitter URL"
+msgstr ""
+
+#: framework/config.php:517
+#: includes/functions.php:41
+#@ mars
+msgid "Google Plus"
+msgstr ""
+
+#: framework/config.php:519
+#@ mars
+msgid "Google Plus URL"
+msgstr ""
+
+#: framework/config.php:523
+#: includes/functions.php:42
+#@ mars
+msgid "Instagram"
+msgstr ""
+
+#: framework/config.php:525
+#@ mars
+msgid "Instagram URL"
+msgstr ""
+
+#: framework/config.php:529
+#: includes/functions.php:43
+#@ mars
+msgid "Linkedin"
+msgstr ""
+
+#: framework/config.php:531
+#@ mars
+msgid "Linkedin URL"
+msgstr ""
+
+#: framework/config.php:542
+#@ mars
+msgid "Video Uploader"
+msgstr ""
+
+#: framework/config.php:544
+#@ mars
+msgid "This feature is affected in Submit Video functions at frontend"
+msgstr ""
+
+#: framework/config.php:549
+#@ mars
+msgid "Allow Guest submit the video."
+msgstr ""
+
+#: framework/config.php:550
+#@ mars
+msgid "By default, Only register can submit the video, you can limit the role in below selectbox"
+msgstr ""
+
+#: framework/config.php:559
+#@ mars
+msgid "Redirect to"
+msgstr ""
+
+#: framework/config.php:560
+#@ mars
+msgid "Redirect the user to this page when submit the video sucessfully."
+msgstr ""
+
+#: framework/config.php:565
+#@ mars
+msgid "Assigned User"
+msgstr ""
+
+#: framework/config.php:566
+#@ mars
+msgid "The video will be assigned for this user if you allow Guest Submit The Video."
+msgstr ""
+
+#: framework/config.php:575
+#@ mars
+msgid "Who can submit the video?"
+msgstr ""
+
+#: framework/config.php:576
+#@ mars
+msgid "You can choose one or multi-roles to limit the permission."
+msgstr ""
+
+#: framework/config.php:581
+#@ mars
+msgid "Default Video Status"
+msgstr ""
+
+#: framework/config.php:582
+#@ mars
+msgid "The Public status will be shown on Frontend."
+msgstr ""
+
+#: framework/config.php:583
+#@ mars
+msgid "Publish"
+msgstr ""
+
+#: framework/config.php:583
+#@ mars
+msgid "Pending"
+msgstr ""
+
+#: framework/config.php:583
+#@ mars
+msgid "draft"
+msgstr ""
+
+#: framework/config.php:589
+#@ mars
+msgid "Use WP Visual Editor"
+msgstr ""
+
+#: framework/config.php:612
+#@ mars
+msgid "Enable Subscribe Box."
+msgstr ""
+
+#: framework/config.php:613
+#@ mars
+msgid "Which is affected in Subscribe Box widget."
+msgstr ""
+
+#: framework/config.php:622
+#@ mars
+msgid "Privacy Policy Page"
+msgstr ""
+
+#: framework/config.php:628
+#@ mars
+msgid "Subscriber Role"
+msgstr ""
+
+#: framework/config.php:629
+#@ mars
+msgid "<strong>subscriber</strong> role is using by default."
+msgstr ""
+
+#: framework/config.php:639
+#@ redux-framework-demo
+msgid "Theme Information 1"
+msgstr ""
+
+#: framework/config.php:640
+#: framework/config.php:646
+#@ redux-framework-demo
+msgid "<p>This is the tab content, HTML is allowed.</p>"
+msgstr ""
+
+#: framework/config.php:645
+#@ redux-framework-demo
+msgid "Theme Information 2"
+msgstr ""
+
+#: framework/config.php:650
+#@ redux-framework-demo
+msgid "<p>This is the sidebar content, HTML is allowed.</p>"
+msgstr ""
+
+#: framework/config.php:668
+#: framework/config.php:669
+#@ mars
+msgid "Theme Options"
+msgstr ""
+
+#: framework/config.php:714
+#, php-format
+#@ redux-framework-demo
+msgid "<p>Did you know that Redux sets a global variable for you? To access any of your saved options from within your code you can use your global variable: <strong>$%1$s</strong></p>"
+msgstr ""
+
+#: framework/config.php:716
+#@ redux-framework-demo
+msgid "<p>This text is displayed above the options panel. It isn't required, but more info is always better! The intro_text field accepts all HTML.</p>"
+msgstr ""
+
+#: functions.php:131
+#@ mars
+msgid "Home Page Navigation"
+msgstr ""
+
+#: functions.php:140
+#: includes/Mars_FeaturedVideos_Widgets.php:184
+#@ mars
+msgid "Featured Videos"
+msgstr ""
+
+#: functions.php:142
+#@ mars
+msgid "Display the featured videos in Home Page"
+msgstr ""
+
+#: functions.php:149
+#@ mars
+msgid "Main Video"
+msgstr ""
+
+#: functions.php:151
+#@ mars
+msgid "Display the video in Main Video Content Page"
+msgstr ""
+
+#: functions.php:159
+#@ mars
+msgid "Home Page Right"
+msgstr ""
+
+#: functions.php:161
+#@ mars
+msgid "Display the Widgets in Home Page Right Sidebar"
+msgstr ""
+
+#: functions.php:170
+#@ mars
+msgid "Inner Page Right"
+msgstr ""
+
+#: functions.php:172
+#@ mars
+msgid "Static Page, Category,Tag,Archive,Search,Author Right Sidebar"
+msgstr ""
+
+#: functions.php:180
+#@ mars
+msgid "Footer Sidebar"
+msgstr ""
+
+#: functions.php:182
+#@ mars
+msgid "Display the Widgets in Blog Single Page Right Sidebar"
+msgstr ""
+
+#: functions.php:190
+#@ mars
+msgid "Video Single Below Content"
+msgstr ""
+
+#: functions.php:192
+#@ mars
+msgid "Display the Widgets in Video Single page, below the video description, you can use to display the Videos Related widget or an ads."
+msgstr ""
+
+#: functions.php:200
+#@ mars
+msgid "Post Single Below Content"
+msgstr ""
+
+#: functions.php:202
+#@ mars
+msgid "Display the Widgets in blog/post single page, bellow the post content, you can use to display the Videos Related widget or an ads."
+msgstr ""
+
+#: header.php:31
+#: includes/Mars_SearchForm_Widget.php:31
+#: searchform.php:4
+#@ mars
+msgid "Search here..."
+msgstr ""
+
+#: header.php:72
+#@ mars
+msgid "Home"
+msgstr ""
+
+#: includes/Mars_Custom_Post_Type.php:19
+#: includes/Mars_Custom_Post_Type.php:33
+#: includes/Mars_Custom_Post_Type.php:34
+#@ mars
+msgid "Videos"
+msgstr ""
+
+#: includes/Mars_Custom_Post_Type.php:35
+#@ mars
+msgid "Add Videos"
+msgstr ""
+
+#: includes/Mars_Custom_Post_Type.php:36
+#@ mars
+msgid "Add New Videos"
+msgstr ""
+
+#: includes/Mars_Custom_Post_Type.php:37
+#: includes/functions.php:94
+#@ mars
+msgid "Edit"
+msgstr ""
+
+#: includes/Mars_Custom_Post_Type.php:38
+#@ mars
+msgid "Edit Videos"
+msgstr ""
+
+#: includes/Mars_Custom_Post_Type.php:39
+#@ mars
+msgid "New Videos"
+msgstr ""
+
+#: includes/Mars_Custom_Post_Type.php:40
+#: includes/Mars_Custom_Post_Type.php:41
+#@ mars
+msgid "View Videos"
+msgstr ""
+
+#: includes/Mars_Custom_Post_Type.php:42
+#@ mars
+msgid "Search Videos"
+msgstr ""
+
+#: includes/Mars_Custom_Post_Type.php:43
+#@ mars
+msgid "No Videos Found"
+msgstr ""
+
+#: includes/Mars_Custom_Post_Type.php:44
+#@ mars
+msgid "No Videos Found in Trash"
+msgstr ""
+
+#: includes/Mars_Custom_Post_Type.php:45
+#@ mars
+msgid "Parent Videos"
+msgstr ""
+
+#: includes/Mars_Custom_Taxonomies.php:14
+#: includes/Mars_Custom_Taxonomies.php:19
+#: includes/Mars_ShortcodeSubmitVideo.php:129
+#: single-video.php:114
+#: single.php:28
+#@ mars
+msgid "Category"
+msgstr ""
+
+#: includes/Mars_Custom_Taxonomies.php:40
+#: includes/Mars_Custom_Taxonomies.php:45
+#: includes/Mars_ShortcodeSubmitVideo.php:125
+#@ mars
+msgid "Video Tag"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:18
+#@ wpo
+msgid "VT Featured Posts Widget, used in Featured Sidebar."
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:22
+#@ wpo
+msgid "VT Featured Posts Widget"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:180
+#@ mars
+msgid "Featured Posts"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:184
+#: includes/Mars_FeaturedVideos_Widgets.php:188
+#: includes/Mars_KeyCloud_Widgets.php:59
+#: includes/Mars_MainPosts_Widgets.php:252
+#: includes/Mars_MainVideos_Widgets.php:258
+#: includes/Mars_OneBigVideo_Widgets.php:87
+#: includes/Mars_Posts_Widget_Siderbar.php:133
+#: includes/Mars_RelatedBlog_Widgets.php:157
+#: includes/Mars_RelatedVideo_Widgets.php:196
+#: includes/Mars_SearchForm_Widget.php:46
+#: includes/Mars_StayConnected_Widget.php:50
+#: includes/Mars_Subscribox_Widget.php:125
+#: includes/Mars_Videos_Widget_Siderbar.php:139
+#@ mars
+msgid "Title:"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:188
+#@ mars
+msgid "Post Category:"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:210
+#: includes/Mars_MainPosts_Widgets.php:278
+#: includes/Mars_Posts_Widget_Siderbar.php:159
+#@ mars
+msgid "Post Tag:"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:211
+#: includes/Mars_FeaturedVideos_Widgets.php:215
+#: includes/Mars_MainPosts_Widgets.php:279
+#: includes/Mars_MainVideos_Widgets.php:285
+#: includes/Mars_Posts_Widget_Siderbar.php:160
+#: includes/Mars_Videos_Widget_Siderbar.php:166
+#@ mars
+msgid "Eg: tag1,tag2,tag3"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:214
+#: includes/Mars_FeaturedVideos_Widgets.php:218
+#: includes/Mars_MainPosts_Widgets.php:282
+#: includes/Mars_MainVideos_Widgets.php:288
+#@ mars
+msgid "Date (Show posts associated with a certain time and date period, (yy-mm-dd)):"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:218
+#: includes/Mars_FeaturedVideos_Widgets.php:222
+#: includes/Mars_MainPosts_Widgets.php:286
+#: includes/Mars_MainVideos_Widgets.php:292
+#: includes/Mars_Posts_Widget_Siderbar.php:163
+#: includes/Mars_RelatedBlog_Widgets.php:161
+#: includes/Mars_RelatedVideo_Widgets.php:200
+#: includes/Mars_Videos_Widget_Siderbar.php:169
+#@ mars
+msgid "Orderby:"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:231
+#: includes/Mars_FeaturedVideos_Widgets.php:235
+#: includes/Mars_MainPosts_Widgets.php:299
+#: includes/Mars_MainVideos_Widgets.php:305
+#: includes/Mars_Posts_Widget_Siderbar.php:176
+#: includes/Mars_RelatedBlog_Widgets.php:174
+#: includes/Mars_RelatedVideo_Widgets.php:213
+#: includes/Mars_Videos_Widget_Siderbar.php:182
+#@ mars
+msgid "Order:"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:244
+#@ mars
+msgid "Post IDs:"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:248
+#: includes/Mars_FeaturedVideos_Widgets.php:252
+#: includes/Mars_MainPosts_Widgets.php:325
+#: includes/Mars_MainVideos_Widgets.php:331
+#: includes/Mars_Posts_Widget_Siderbar.php:202
+#: includes/Mars_RelatedBlog_Widgets.php:187
+#: includes/Mars_RelatedVideo_Widgets.php:226
+#: includes/Mars_Videos_Widget_Siderbar.php:208
+#@ mars
+msgid "Shows:"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:252
+#@ mars
+msgid "Show Sticky Posts:"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:256
+#: includes/Mars_FeaturedVideos_Widgets.php:256
+#: includes/Mars_RelatedBlog_Widgets.php:191
+#: includes/Mars_RelatedVideo_Widgets.php:230
+#@ mars
+msgid "Rows:"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:260
+#: includes/Mars_FeaturedVideos_Widgets.php:260
+#: includes/Mars_MainPosts_Widgets.php:333
+#: includes/Mars_MainVideos_Widgets.php:339
+#: includes/Mars_RelatedBlog_Widgets.php:195
+#: includes/Mars_RelatedVideo_Widgets.php:234
+#@ mars
+msgid "Auto Play:"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:267
+#: includes/Mars_FeaturedVideos_Widgets.php:267
+#: includes/Mars_MainPosts_Widgets.php:352
+#: includes/Mars_MainVideos_Widgets.php:358
+#: includes/Mars_Posts_Widget_Siderbar.php:216
+#: includes/Mars_RelatedBlog_Widgets.php:202
+#: includes/Mars_RelatedVideo_Widgets.php:241
+#: includes/Mars_Videos_Widget_Siderbar.php:222
+#@ mars
+msgid "ASC"
+msgstr ""
+
+#: includes/Mars_FeaturedPosts_Widgets.php:268
+#: includes/Mars_FeaturedVideos_Widgets.php:268
+#: includes/Mars_MainPosts_Widgets.php:351
+#: includes/Mars_MainVideos_Widgets.php:357
+#: includes/Mars_Posts_Widget_Siderbar.php:215
+#: includes/Mars_RelatedBlog_Widgets.php:203
+#: includes/Mars_RelatedVideo_Widgets.php:242
+#: includes/Mars_Videos_Widget_Siderbar.php:221
+#@ mars
+msgid "DESC"
+msgstr ""
+
+#: includes/Mars_FeaturedVideos_Widgets.php:18
+#: includes/Mars_FeaturedVideos_Widgets.php:22
+#@ wpo
+msgid "VT Featured Videos Widget"
+msgstr ""
+
+#: includes/Mars_FeaturedVideos_Widgets.php:192
+#: includes/Mars_MainVideos_Widgets.php:262
+#: includes/Mars_Posts_Widget_Siderbar.php:137
+#: includes/Mars_Videos_Widget_Siderbar.php:143
+#@ mars
+msgid "Video Category:"
+msgstr ""
+
+#: includes/Mars_FeaturedVideos_Widgets.php:214
+#: includes/Mars_MainVideos_Widgets.php:284
+#: includes/Mars_Videos_Widget_Siderbar.php:165
+#@ mars
+msgid "Video Tag:"
+msgstr ""
+
+#: includes/Mars_FeaturedVideos_Widgets.php:248
+#@ mars
+msgid "Video IDs:"
+msgstr ""
+
+#: includes/Mars_KeyCloud_Widgets.php:18
+#@ wpo
+msgid "VT Tags Cloud (Popular Keys) Widget"
+msgstr ""
+
+#: includes/Mars_KeyCloud_Widgets.php:22
+#@ wpo
+msgid "VT Tags Cloud"
+msgstr ""
+
+#: includes/Mars_KeyCloud_Widgets.php:56
+#@ mars
+msgid "Tags Cloud"
+msgstr ""
+
+#: includes/Mars_Like_Dislike.php:30
+#@ mars
+msgid "The action was not defined."
+msgstr ""
+
+#: includes/Mars_Like_Dislike.php:38
+#, php-format
+#@ mars
+msgid "Please %s to continue."
+msgstr ""
+
+#: includes/Mars_Like_Dislike.php:38
+#@ mars
+msgid "login"
+msgstr ""
+
+#: includes/Mars_Like_Dislike.php:49
+#@ mars
+msgid "You have already rated this video"
+msgstr ""
+
+#: includes/Mars_Like_Dislike.php:61
+#@ mars
+msgid "Thanks for your rating :)"
+msgstr ""
+
+#: includes/Mars_Like_Dislike.php:69
+#@ mars
+msgid "Thanks for your rating :("
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:48
+#@ mars
+msgid "Lost Password?"
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:54
+#: includes/Mars_LoginRegister_Template.php:70
+#@ mars
+msgid "Log In"
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:60
+#@ mars
+msgid "You are already logged in."
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:69
+#@ mars
+msgid "Remember Me"
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:82
+#: includes/Mars_ShortcodeSubmitVideo.php:36
+#@ mars
+msgid "Login"
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:88
+#@ mars
+msgid "Register your Account"
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:95
+#@ mars
+msgid "Email"
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:103
+#@ mars
+msgid "Confirm Password"
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:115
+#: includes/Mars_LoginRegister_Template.php:116
+#: includes/Mars_ShortcodeSubmitVideo.php:36
+#: includes/Mars_Subscribox_Widget.php:94
+#: includes/Mars_Subscribox_Widget.php:95
+#@ mars
+msgid "Register"
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:130
+#: includes/Mars_LoginRegister_Template.php:143
+#@ mars
+msgid "Please enter Username."
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:149
+#@ mars
+msgid "This username is already registered. Please choose another one."
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:155
+#@ mars
+msgid "Please enter Email."
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:161
+#: includes/Mars_LoginRegister_Template.php:239
+#@ mars
+msgid "Please enter Password."
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:167
+#@ mars
+msgid "Please confirm Password."
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:173
+#@ mars
+msgid "Invalid confirm password"
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:181
+#@ mars
+msgid "Can not found Recaptcha library."
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:191
+#: includes/Mars_ShortcodeSubmitVideo.php:206
+#@ mars
+msgid "Recaptcha is required"
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:220
+#@ mars
+msgid "Registered"
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:233
+#@ mars
+msgid "Please enter Account/Email."
+msgstr ""
+
+#: includes/Mars_LoginRegister_Template.php:256
+#@ mars
+msgid "Logged"
+msgstr ""
+
+#: includes/Mars_MainPosts_Widgets.php:19
+#: includes/Mars_MainPosts_Widgets.php:23
+#@ wpo
+msgid "VT Main Posts Widget"
+msgstr ""
+
+#: includes/Mars_MainPosts_Widgets.php:116
+#: includes/Mars_MainVideos_Widgets.php:125
+#: includes/Mars_OneBigVideo_Widgets.php:37
+#@ mars
+msgid "View More"
+msgstr ""
+
+#: includes/Mars_MainPosts_Widgets.php:204
+#: loop-post.php:21
+#@ mars
+msgid "Read More"
+msgstr ""
+
+#: includes/Mars_MainPosts_Widgets.php:249
+#@ mars
+msgid "Latest Posts"
+msgstr ""
+
+#: includes/Mars_MainPosts_Widgets.php:256
+#@ mars
+msgid "Category:"
+msgstr ""
+
+#: includes/Mars_MainPosts_Widgets.php:312
+#: includes/Mars_MainVideos_Widgets.php:318
+#: includes/Mars_Posts_Widget_Siderbar.php:189
+#: includes/Mars_Videos_Widget_Siderbar.php:195
+#@ mars
+msgid "Widget Column:"
+msgstr ""
+
+#: includes/Mars_MainPosts_Widgets.php:329
+#: includes/Mars_MainVideos_Widgets.php:335
+#@ mars
+msgid "Rows (Available with 3 or 1 Column):"
+msgstr ""
+
+#: includes/Mars_MainPosts_Widgets.php:337
+#: includes/Mars_OneBigVideo_Widgets.php:95
+#@ mars
+msgid "View more link:"
+msgstr ""
+
+#: includes/Mars_MainPosts_Widgets.php:344
+#@ mars
+msgid "3 Columns"
+msgstr ""
+
+#: includes/Mars_MainPosts_Widgets.php:345
+#: includes/Mars_MainVideos_Widgets.php:351
+#: includes/Mars_Posts_Widget_Siderbar.php:209
+#: includes/Mars_Videos_Widget_Siderbar.php:215
+#@ mars
+msgid "2 Columns"
+msgstr ""
+
+#: includes/Mars_MainPosts_Widgets.php:346
+#: includes/Mars_Posts_Widget_Siderbar.php:210
+#: includes/Mars_Videos_Widget_Siderbar.php:216
+#@ mars
+msgid "1 Column"
+msgstr ""
+
+#: includes/Mars_MainVideos_Widgets.php:18
+#: includes/Mars_MainVideos_Widgets.php:22
+#@ wpo
+msgid "VT Main Videos Widget"
+msgstr ""
+
+#: includes/Mars_MainVideos_Widgets.php:210
+#: includes/Mars_OneBigVideo_Widgets.php:66
+#@ mars
+msgid "Watch Video"
+msgstr ""
+
+#: includes/Mars_MainVideos_Widgets.php:255
+#@ mars
+msgid "Latest Videos"
+msgstr ""
+
+#: includes/Mars_MainVideos_Widgets.php:343
+#@ mars
+msgid "View more link (available for 2 columns.):"
+msgstr ""
+
+#: includes/Mars_MainVideos_Widgets.php:350
+#@ mars
+msgid "3 Columns - Carousel"
+msgstr ""
+
+#: includes/Mars_MainVideos_Widgets.php:352
+#@ mars
+msgid "1 Column - Carousel"
+msgstr ""
+
+#: includes/Mars_MetaBox.php:25
+#: includes/Mars_MetaBox.php:31
+#@ mars
+msgid "Video URL"
+msgstr ""
+
+#: includes/Mars_MetaBox.php:44
+#: includes/Mars_MetaBox.php:50
+#: includes/Mars_Video_Table.php:41
+#@ mars
+msgid "iFrame/Object"
+msgstr ""
+
+#: includes/Mars_MetaBox.php:60
+#@ mars
+msgid "Upload Video"
+msgstr ""
+
+#: includes/Mars_MetaBox.php:66
+#@ mars
+msgid "Video File (mp4, m4v, webm, ogv, wmv, flv)"
+msgstr ""
+
+#: includes/Mars_MetaBox.php:94
+#@ mars
+msgid "Choose Layout"
+msgstr ""
+
+#: includes/Mars_MetaBox.php:102
+#@ mars
+msgid "Small"
+msgstr ""
+
+#: includes/Mars_MetaBox.php:103
+#@ mars
+msgid "Large"
+msgstr ""
+
+#: includes/Mars_OneBigVideo_Widgets.php:18
+#: includes/Mars_OneBigVideo_Widgets.php:22
+#@ wpo
+msgid "VT One Big Video/Post"
+msgstr ""
+
+#: includes/Mars_OneBigVideo_Widgets.php:83
+#@ mars
+msgid "Latest Video/Post"
+msgstr ""
+
+#: includes/Mars_OneBigVideo_Widgets.php:91
+#@ mars
+msgid "Enter a Post ID:"
+msgstr ""
+
+#: includes/Mars_OneBigVideo_Widgets.php:92
+#@ mars
+msgid "example: 12"
+msgstr ""
+
+#: includes/Mars_Posts_Widget_Siderbar.php:18
+#: includes/Mars_Posts_Widget_Siderbar.php:22
+#@ wpo
+msgid "VT Right Post Widgets"
+msgstr ""
+
+#: includes/Mars_Posts_Widget_Siderbar.php:130
+#@ mars
+msgid "Right Sidebar Posts"
+msgstr ""
+
+#: includes/Mars_RelatedBlog_Widgets.php:18
+#: includes/Mars_RelatedBlog_Widgets.php:22
+#@ wpo
+msgid "VT Related Blog Widget"
+msgstr ""
+
+#: includes/Mars_RelatedBlog_Widgets.php:154
+#@ mars
+msgid "Related posts"
+msgstr ""
+
+#: includes/Mars_RelatedVideo_Widgets.php:18
+#: includes/Mars_RelatedVideo_Widgets.php:22
+#@ wpo
+msgid "VT Related Videos Widget"
+msgstr ""
+
+#: includes/Mars_RelatedVideo_Widgets.php:193
+#@ mars
+msgid "Related Videos"
+msgstr ""
+
+#: includes/Mars_Required_Plugins.php:81
+#: includes/class-tgm-plugin-activation.php:164
+#@ mars
+#@ redux-framework
+msgid "Install Required Plugins"
+msgstr ""
+
+#: includes/Mars_Required_Plugins.php:82
+#: includes/class-tgm-plugin-activation.php:165
+#@ mars
+#@ redux-framework
+msgid "Install Plugins"
+msgstr ""
+
+#: includes/Mars_Required_Plugins.php:83
+#: includes/class-tgm-plugin-activation.php:166
+#, php-format
+#@ mars
+#@ redux-framework
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: includes/Mars_Required_Plugins.php:84
+#@ mars
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: includes/Mars_Required_Plugins.php:85
+#: includes/class-tgm-plugin-activation.php:168
+#, php-format
+#@ redux-framework
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/Mars_Required_Plugins.php:86
+#: includes/class-tgm-plugin-activation.php:169
+#, php-format
+#@ redux-framework
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/Mars_Required_Plugins.php:87
+#: includes/class-tgm-plugin-activation.php:170
+#, php-format
+#@ redux-framework
+msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
+msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/Mars_Required_Plugins.php:88
+#: includes/class-tgm-plugin-activation.php:171
+#, php-format
+#@ redux-framework
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/Mars_Required_Plugins.php:89
+#: includes/class-tgm-plugin-activation.php:172
+#, php-format
+#@ redux-framework
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/Mars_Required_Plugins.php:90
+#: includes/class-tgm-plugin-activation.php:173
+#, php-format
+#@ redux-framework
+msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
+msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/Mars_Required_Plugins.php:91
+#: includes/class-tgm-plugin-activation.php:174
+#, php-format
+#@ redux-framework
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/Mars_Required_Plugins.php:92
+#: includes/class-tgm-plugin-activation.php:175
+#, php-format
+#@ redux-framework
+msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
+msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/Mars_Required_Plugins.php:93
+#: includes/class-tgm-plugin-activation.php:176
+#@ redux-framework
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/Mars_Required_Plugins.php:94
+#: includes/class-tgm-plugin-activation.php:177
+#@ redux-framework
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/Mars_Required_Plugins.php:95
+#: includes/class-tgm-plugin-activation.php:178
+#: includes/class-tgm-plugin-activation.php:490
+#@ mars
+#@ redux-framework
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: includes/Mars_Required_Plugins.php:96
+#: includes/class-tgm-plugin-activation.php:179
+#: includes/class-tgm-plugin-activation.php:1846
+#@ mars
+#@ redux-framework
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: includes/Mars_Required_Plugins.php:97
+#, php-format
+#@ mars
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: includes/Mars_SearchForm_Widget.php:18
+#@ wpo
+msgid "VT Search Form in Header"
+msgstr ""
+
+#: includes/Mars_SearchForm_Widget.php:22
+#@ wpo
+msgid "VT Search Form"
+msgstr ""
+
+#: includes/Mars_SearchForm_Widget.php:42
+#@ mars
+msgid "Search Form"
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:36
+#, php-format
+#@ mars
+msgid "Please %s/%s to continue."
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:42
+#@ mars
+msgid "You don't have the right permission to access this feature."
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:58
+#@ mars
+msgid "Video Title"
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:64
+#@ mars
+msgid "Video Type"
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:66
+#@ mars
+msgid "Link"
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:69
+#: includes/Mars_ShortcodeSubmitVideo.php:82
+#@ mars
+msgid "Embed Code"
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:72
+#@ mars
+msgid "Upload file"
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:76
+#@ mars
+msgid "Video Link"
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:88
+#@ mars
+msgid "Video File"
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:94
+#@ mars
+msgid "Video Preview Image (Thumbnail)"
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:115
+#@ mars
+msgid "Video Description"
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:136
+#@ mars
+msgid "ERROR: Please install recaptchalib Class plugin."
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:139
+#@ mars
+msgid "ERROR: Please contact your Administrator for providing Public Key to continue."
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:142
+#@ mars
+msgid "ERROR: Please contact your Administrator for providing Private Key to continue."
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:175
+#@ mars
+msgid "Video Title is required"
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:182
+#@ mars
+msgid "Video Link is required"
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:189
+#@ mars
+msgid "Video Description is required"
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:236
+#@ mars
+msgid "Error: Unable to create Video. Please try again."
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:255
+#: includes/Mars_ShortcodeSubmitVideo.php:262
+#@ mars
+msgid "Congratulation, Your submit is waiting for approval."
+msgstr ""
+
+#: includes/Mars_ShortcodeSubmitVideo.php:271
+#@ mars
+msgid "Congratulation, Your submit is published."
+msgstr ""
+
+#: includes/Mars_StayConnected_Widget.php:18
+#@ wpo
+msgid "VT Stay Connected Box, placed in footer"
+msgstr ""
+
+#: includes/Mars_StayConnected_Widget.php:22
+#@ wpo
+msgid "VT Stay Connected Box"
+msgstr ""
+
+#: includes/Mars_StayConnected_Widget.php:47
+#@ mars
+msgid "Stay Connected"
+msgstr ""
+
+#: includes/Mars_Subscribe_Ajax.php:19
+#@ mars
+msgid "Please enter your name."
+msgstr ""
+
+#: includes/Mars_Subscribe_Ajax.php:27
+#@ mars
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: includes/Mars_Subscribe_Ajax.php:35
+#@ mars
+msgid "Please agree with our Private Policy."
+msgstr ""
+
+#: includes/Mars_Subscribe_Ajax.php:58
+#@ mars
+msgid "Congratulation."
+msgstr ""
+
+#: includes/Mars_Subscribox_Widget.php:18
+#: includes/Mars_Subscribox_Widget.php:22
+#@ wpo
+msgid "VT Social Subscribe Box"
+msgstr ""
+
+#: includes/Mars_Subscribox_Widget.php:39
+#: includes/Mars_Subscribox_Widget.php:57
+#@ mars
+msgid "Fans"
+msgstr ""
+
+#: includes/Mars_Subscribox_Widget.php:48
+#@ mars
+msgid "Followers"
+msgstr ""
+
+#: includes/Mars_Subscribox_Widget.php:66
+#@ mars
+msgid "Subscribers"
+msgstr ""
+
+#: includes/Mars_Subscribox_Widget.php:85
+#@ mars
+msgid "Your Email Address"
+msgstr ""
+
+#: includes/Mars_Subscribox_Widget.php:90
+#@ mars
+msgid "User Agreement & Privacy Policy"
+msgstr ""
+
+#: includes/Mars_Subscribox_Widget.php:122
+#@ mars
+msgid "Social Subscribox"
+msgstr ""
+
+#: includes/Mars_Video_Table.php:19
+#: includes/class-tgm-plugin-activation.php:1298
+#@ mars
+#@ redux-framework
+msgid "Source"
+msgstr ""
+
+#: includes/Mars_Video_Table.php:20
+#@ mars
+msgid "Likes"
+msgstr ""
+
+#: includes/Mars_Video_Table.php:21
+#@ mars
+msgid "Views"
+msgstr ""
+
+#: includes/Mars_Video_Table.php:38
+#@ mars
+msgid "Hosted"
+msgstr ""
+
+#: includes/Mars_Videos_Widget_Siderbar.php:18
+#: includes/Mars_Videos_Widget_Siderbar.php:22
+#@ wpo
+msgid "VT Right Video Widgets"
+msgstr ""
+
+#: includes/Mars_Videos_Widget_Siderbar.php:136
+#@ mars
+msgid "Right Sidebar Videos"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:167
+#@ redux-framework
+msgid "Something went wrong."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:180
+#, php-format
+#@ redux-framework
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:517
+#: includes/class-tgm-plugin-activation.php:2058
+#@ redux-framework
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:545
+#, php-format
+#@ redux-framework
+msgid "The following plugin was activated successfully: %s."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:704
+#@ redux-framework
+msgid "Dismiss this notice"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1091
+#@ redux-framework
+msgid "External Link"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1096
+#@ redux-framework
+msgid "Private Repository"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1099
+#@ redux-framework
+msgid "Pre-Packaged"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1103
+#@ redux-framework
+msgid "WordPress Repository"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1106
+#@ redux-framework
+msgid "Required"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1106
+#@ redux-framework
+msgid "Recommended"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1109
+#@ redux-framework
+msgid "Not Installed"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1111
+#@ redux-framework
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1281
+#, php-format
+#@ redux-framework
+msgid "No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the Dashboard\">Return to the Dashboard</a>"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1297
+#@ redux-framework
+msgid "Plugin"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1299
+#@ redux-framework
+msgid "Type"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1300
+#@ redux-framework
+msgid "Status"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1318
+#@ redux-framework
+msgid "Install"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1319
+#@ redux-framework
+msgid "Activate"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1544
+#@ redux-framework
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-tgm-plugin-activation.php:1829
+#@ redux-framework
+msgid "Install package not available."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1830
+#, php-format
+#@ redux-framework
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1831
+#@ redux-framework
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1832
+#@ redux-framework
+msgid "Installing the plugin&#8230;"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1833
+#@ redux-framework
+msgid "Plugin install failed."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1834
+#@ redux-framework
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1845
+#@ redux-framework
+msgid "Plugin activation failed."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1955
+#@ redux-framework
+msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1956
+#, php-format
+#@ redux-framework
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1956
+#: includes/class-tgm-plugin-activation.php:1965
+#@ redux-framework
+msgid "Show Details"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1956
+#: includes/class-tgm-plugin-activation.php:1965
+#@ redux-framework
+msgid "Hide Details"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1957
+#@ redux-framework
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1958
+#, php-format
+#@ redux-framework
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1962
+#@ redux-framework
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1963
+#, php-format
+#@ redux-framework
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1964
+#, php-format
+#@ redux-framework
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1965
+#, php-format
+#@ redux-framework
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1966
+#@ redux-framework
+msgid "All installations have been completed."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1967
+#, php-format
+#@ redux-framework
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: includes/documentation.php:9
+#@ mars
+msgid "Documentation"
+msgstr ""
+
+#: includes/functions.php:40
+#@ mars
+msgid "twitter"
+msgstr ""
+
+#: includes/functions.php:52
+#@ mars
+msgid "Order by Post ID"
+msgstr ""
+
+#: includes/functions.php:53
+#@ mars
+msgid "Order by author"
+msgstr ""
+
+#: includes/functions.php:54
+#@ mars
+msgid "Order by title"
+msgstr ""
+
+#: includes/functions.php:55
+#@ mars
+msgid "Order by Post name (Post slug)"
+msgstr ""
+
+#: includes/functions.php:56
+#@ mars
+msgid "Order by date"
+msgstr ""
+
+#: includes/functions.php:57
+#@ mars
+msgid "Order by last modified date"
+msgstr ""
+
+#: includes/functions.php:58
+#@ mars
+msgid "Order by Random"
+msgstr ""
+
+#: includes/functions.php:59
+#@ mars
+msgid "Order by number of comments"
+msgstr ""
+
+#: includes/functions.php:62
+#@ mars
+msgid "Order by Views"
+msgstr ""
+
+#: includes/functions.php:63
+#@ mars
+msgid "Order by Likes"
+msgstr ""
+
+#: includes/functions.php:86
+#@ mars
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: includes/functions.php:92
+#@ mars
+msgid "Reply"
+msgstr ""
+
+#: includes/functions.php:253
+#@ mars
+msgid "Lastest"
+msgstr ""
+
+#: includes/functions.php:254
+#@ mars
+msgid "Viewed"
+msgstr ""
+
+#: includes/functions.php:255
+#@ mars
+msgid "Liked"
+msgstr ""
+
+#: includes/functions.php:256
+#: single-video.php:41
+#@ mars
+msgid "Comments"
+msgstr ""
+
+#: includes/functions.php:258
+#@ mars
+msgid "Sort by:"
+msgstr ""
+
+#: includes/hooks.php:36
+#@ mars
+msgid "ago"
+msgstr ""
+
+#: search.php:9
+#, php-format
+#@ mars
+msgid "About %s results"
+msgstr ""
+
+#: search.php:11
+#, php-format
+#@ mars
+msgid "About %s result"
+msgstr ""
+
+#: search.php:33
+#@ mars
+msgid "Nothing Found."
+msgstr ""
+
+#: single-video.php:48
+#@ mars
+msgid "Share"
+msgstr ""
+
+#: single-video.php:66
+#@ mars
+msgid "Please login to continue."
+msgstr ""
+
+#: single-video.php:81
+#@ mars
+msgid "Turn off Light"
+msgstr ""
+
+#: single-video.php:105
+#, php-format
+#@ mars
+msgid "I saw this and thought of you! %s"
+msgstr ""
+
+#: single-video.php:112
+#, php-format
+#@ mars
+msgid "Published on %s by %s"
+msgstr ""
+
+#: single-video.php:115
+#: single.php:29
+#@ mars
+msgid "Tag"
+msgstr ""
+
