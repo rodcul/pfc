@@ -35,6 +35,7 @@ class Youku_Thumbnails extends Video_Thumbnails_Providers {
 
 	// Regex strings
 	public $regexes = array(
+		'#http://player\.youku\.com/embed/([A-Za-z0-9]+)#', // iFrame
 		'#http://player\.youku\.com/player\.php/sid/([A-Za-z0-9]+)/v\.swf#', // Flash
 		'#http://v\.youku\.com/v_show/id_([A-Za-z0-9]+)\.html#' // Link
 	);
@@ -44,7 +45,7 @@ class Youku_Thumbnails extends Video_Thumbnails_Providers {
 		$request = "http://v.youku.com/player/getPlayList/VideoIDS/$id/";
 		$response = wp_remote_get( $request, array( 'sslverify' => false ) );
 		if( is_wp_error( $response ) ) {
-			$result = new WP_Error( 'youku_info_retrieval', __( 'Error retrieving video information from the URL <a href="' . $request . '">' . $request . '</a> using <code>wp_remote_get()</code><br />If opening that URL in your web browser returns anything else than an error page, the problem may be related to your web server and might be something your host administrator can solve.<br />Details: ' . $response->get_error_message() ) );
+			$result = $this->construct_info_retrieval_error( $request, $response );
 		} else {
 			$result = json_decode( $response['body'] );
 			$result = $result->data[0]->logo;
@@ -53,20 +54,28 @@ class Youku_Thumbnails extends Video_Thumbnails_Providers {
 	}
 
 	// Test cases
-	public $test_cases = array(
-		array(
-			'markup'        => '<embed src="http://player.youku.com/player.php/sid/XMzQyMzk5MzQ4/v.swf" quality="high" width="480" height="400" align="middle" allowScriptAccess="sameDomain" allowFullscreen="true" type="application/x-shockwave-flash"></embed>',
-			'expected'      => 'http://g1.ykimg.com/1100641F464F0FB57407E2053DFCBC802FBBC4-E4C5-7A58-0394-26C366F10493',
-			'expected_hash' => 'deac7bb89058a8c46ae2350da9d33ba8',
-			'name'          => 'Flash embed'
-		),
-		array(
-			'markup'        => 'http://v.youku.com/v_show/id_XMzQyMzk5MzQ4.html',
-			'expected'      => 'http://g1.ykimg.com/1100641F464F0FB57407E2053DFCBC802FBBC4-E4C5-7A58-0394-26C366F10493',
-			'expected_hash' => 'deac7bb89058a8c46ae2350da9d33ba8',
-			'name'          => 'Link'
-		),
-	);
+	public static function get_test_cases() {
+		return array(
+			array(
+				'markup'        => '<iframe height=498 width=510 src="http://player.youku.com/embed/XMzQyMzk5MzQ4" frameborder=0 allowfullscreen></iframe>',
+				'expected'      => 'http://g1.ykimg.com/1100641F464F0FB57407E2053DFCBC802FBBC4-E4C5-7A58-0394-26C366F10493',
+				'expected_hash' => 'deac7bb89058a8c46ae2350da9d33ba8',
+				'name'          => __( 'iFrame Embed', 'video-thumbnails' )
+			),
+			array(
+				'markup'        => '<embed src="http://player.youku.com/player.php/sid/XMzQyMzk5MzQ4/v.swf" quality="high" width="480" height="400" align="middle" allowScriptAccess="sameDomain" allowFullscreen="true" type="application/x-shockwave-flash"></embed>',
+				'expected'      => 'http://g1.ykimg.com/1100641F464F0FB57407E2053DFCBC802FBBC4-E4C5-7A58-0394-26C366F10493',
+				'expected_hash' => 'deac7bb89058a8c46ae2350da9d33ba8',
+				'name'          => __( 'Flash Embed', 'video-thumbnails' )
+			),
+			array(
+				'markup'        => 'http://v.youku.com/v_show/id_XMzQyMzk5MzQ4.html',
+				'expected'      => 'http://g1.ykimg.com/1100641F464F0FB57407E2053DFCBC802FBBC4-E4C5-7A58-0394-26C366F10493',
+				'expected_hash' => 'deac7bb89058a8c46ae2350da9d33ba8',
+				'name'          => __( 'Video URL', 'video-thumbnails' )
+			),
+		);
+	}
 
 }
 

@@ -5,7 +5,7 @@
  * Description: Display the counting Twitter followers, Facebook fans, YouTube subscribers posts and comments.
  * Author: claudiosanches, felipesantana
  * Author URI: http://claudiosmweb.com/
- * Version: 2.8.1
+ * Version: 2.9.1
  * License: GPLv2 or later
  * Text Domain: social-count-plus
  * Domain Path: /languages/
@@ -197,27 +197,46 @@ class Social_Count_Plus {
 				'title' => __( 'YouTube username', 'social-count-plus' ),
 				'default' => null,
 				'type' => 'text',
-				'description' => __( 'Insert the YouTube username. Example: lemos81', 'social-count-plus' ),
+				'description' => __( 'Insert the YouTube username. Example: UCWGz8KbT5IE7PxhSN1jjimw', 'social-count-plus' ),
+				'section' => 'youtube',
+				'menu' => 'socialcountplus_settings'
+			),
+			'youtube_url' => array(
+				'title' => __( 'YouTube Channel URL', 'social-count-plus' ),
+				'default' => null,
+				'type' => 'text',
+				'description' => __( 'Insert the YouTube channel URL. Example: https://www.youtube.com/channel/UCWGz8KbT5IE7PxhSN1jjimw', 'social-count-plus' ),
 				'section' => 'youtube',
 				'menu' => 'socialcountplus_settings'
 			),
 			'googleplus' => array(
-				'title' => __( 'Google Plus', 'social-count-plus' ),
+				'title' => __( 'Google+', 'social-count-plus' ),
 				'type' => 'section',
 				'menu' => 'socialcountplus_settings'
 			),
 			'googleplus_active' => array(
-				'title' => __( 'Display Google Plus counter', 'social-count-plus' ),
+				'title' => __( 'Display Google+ counter', 'social-count-plus' ),
 				'default' => null,
 				'type' => 'checkbox',
 				'section' => 'googleplus',
 				'menu' => 'socialcountplus_settings'
 			),
 			'googleplus_id' => array(
-				'title' => __( 'Google Plus page ID', 'social-count-plus' ),
+				'title' => __( 'Google+ ID', 'social-count-plus' ),
 				'default' => null,
 				'type' => 'text',
-				'description' => __( 'Google Plus page ID. Must be the numeric ID.<br />You can find this information clicking to edit your page on Google Plus. The URL will be similar to this:<br />https://plus.google.com/<strong>115161266310935247804</strong>', 'social-count-plus' ),
+				'description' => __( 'Google+ page or profile ID. <br />Example:<br />https://plus.google.com/<strong>115161266310935247804</strong> or https://plus.google.com/<strong>+Ferramentasblog1</strong>', 'social-count-plus' ),
+				'section' => 'googleplus',
+				'menu' => 'socialcountplus_settings'
+			),
+			'googleplus_api_key' => array(
+				'title' => __( 'Google API Key', 'social-count-plus' ),
+				'default' => null,
+				'type' => 'text',
+				'description' => sprintf(
+					__( 'Get your API key creating a project/app in %s, then inside your project go to "APIs & auth > APIs" and turn on the "Google+ API", finally go to "APIs & auth > APIs > Credentials > Public API access" and click in the "CREATE A NEW KEY" button, select the "Browser key" option and click in the "CREATE" button, now just copy your API key and paste here.', 'social-count-plus' ),
+					'<a href="https://console.developers.google.com/project">https://console.developers.google.com/project</a>'
+				),
 				'section' => 'googleplus',
 				'menu' => 'socialcountplus_settings'
 			),
@@ -336,7 +355,6 @@ class Social_Count_Plus {
 			),
 			'target_blank' => array(
 				'title' => __( 'Open URLs in new tab/window', 'social-count-plus' ),
-				'default' => 1,
 				'type' => 'checkbox',
 				'section' => 'settings',
 				'menu' => 'socialcountplus_settings',
@@ -344,7 +362,6 @@ class Social_Count_Plus {
 			),
 			'rel_nofollow' => array(
 				'title' => __( 'Add nofollow in URLs', 'social-count-plus' ),
-				'default' => 1,
 				'type' => 'checkbox',
 				'section' => 'settings',
 				'menu' => 'socialcountplus_settings',
@@ -391,10 +408,11 @@ class Social_Count_Plus {
 
 		foreach ( $this->default_settings() as $key => $value ) {
 			if ( 'section' != $value['type'] ) {
-				if ( 'socialcountplus_design' == $value['menu'] )
+				if ( 'socialcountplus_design' == $value['menu'] ) {
 					$design[ $key ] = $value['default'];
-				else
+				} else {
 					$settings[ $key ] = $value['default'];
+				}
 			}
 		}
 
@@ -415,6 +433,7 @@ class Social_Count_Plus {
 				'facebook_id'            => get_option( 'scp_facebook' ),
 				// 'youtube_active'         => '',
 				'youtube_user'           => '',
+				'youtube_url'            => '',
 				// 'googleplup_active'      => '',
 				'googleplus_id'          => '',
 				// 'instagram_active'       => '',
@@ -428,7 +447,7 @@ class Social_Count_Plus {
 				'soundcloud_client_id'   => '',
 				'posts_active'           => ( 'true' == get_option( 'scp_show_posts' ) ) ? 1 : '',
 				'comments_active'        => ( 'true' == get_option( 'scp_show_comment' ) ) ? 1 : '',
-				'target_blank'           => 1,
+				// 'target_blank'           => '',
 				// 'rel_nofollow'           => ''
 			);
 
@@ -479,18 +498,13 @@ class Social_Count_Plus {
 		} else {
 			$settings_options = get_option( 'socialcountplus_settings' );
 
-			if ( isset( $settings_options['twitter_user'] ) && ! isset( $settings_options['instagram_username'] ) ) {
-				// Update to version 2.7.0.
+			if ( isset( $settings_options['twitter_user'] ) && ! isset( $settings_options['googleplus_api_key'] ) ) {
+				// Update to version 2.9.0.
 				$new_options = array(
-					'instagram_username'     => '',
-					'instagram_user_id'      => '',
-					'instagram_access_token' => '',
-					'steam_group_name'       => '',
-					'soundcloud_username'    => '',
-					'soundcloud_client_id'   => '',
+					'googleplus_api_key' => ''
 				);
 
-				update_option( 'socialcountplus_settings', array_merge( $new_options, $settings ) );
+				update_option( 'socialcountplus_settings', array_merge( $new_options, $settings_options ) );
 			} else {
 				// Install default options.
 				$this->install();
@@ -519,15 +533,17 @@ class Social_Count_Plus {
 
 		// Create tabs current class.
 		$current_tab = '';
-		if ( isset( $_GET['tab'] ) )
+		if ( isset( $_GET['tab'] ) ) {
 			$current_tab = $_GET['tab'];
-		else
+		} else {
 			$current_tab = 'settings';
+		}
 
 		// Reset transients when save settings page.
 		if ( isset( $_GET['settings-updated'] ) ) {
-			if ( true == $_GET['settings-updated'] )
+			if ( true == $_GET['settings-updated'] ) {
 				$this->counter->reset_transients();
+			}
 		}
 
 		?>
@@ -682,8 +698,9 @@ class Social_Count_Plus {
 		$settings_options = get_option( $settings );
 
 		// Create option in wp_options.
-		if ( false == $settings_options || ! isset( $settings_options['instagram_username'] ) )
+		if ( false == $settings_options || ! isset( $settings_options['googleplus_api_key'] ) ) {
 			$this->update();
+		}
 
 		foreach ( $this->default_settings() as $key => $value ) {
 
@@ -780,16 +797,18 @@ class Social_Count_Plus {
 
 		$options = get_option( $menu );
 
-		if ( isset( $options[ $id ] ) )
+		if ( isset( $options[ $id ] ) ) {
 			$current = $options[ $id ];
-		else
+		} else {
 			$current = isset( $args['default'] ) ? $args['default'] : '';
+		}
 
 		$html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="%4$s" />', $id, $menu, $current, $class );
 
 		// Displays option description.
-		if ( isset( $args['description'] ) )
+		if ( isset( $args['description'] ) ) {
 			$html .= sprintf( '<p class="description">%s</p>', $args['description'] );
+		}
 
 		echo $html;
 	}
@@ -807,18 +826,20 @@ class Social_Count_Plus {
 
 		$options = get_option( $menu );
 
-		if ( isset( $options[ $id ] ) )
+		if ( isset( $options[ $id ] ) ) {
 			$current = $options[ $id ];
-		else
+		} else {
 			$current = isset( $args['default'] ) ? $args['default'] : '';
+		}
 
 		$html = sprintf( '<input type="checkbox" id="%1$s" name="%2$s[%1$s]" value="1"%3$s />', $id, $menu, checked( 1, $current, false ) );
 
 		$html .= sprintf( '<label for="%s"> %s</label><br />', $id, __( 'Activate/Deactivate', 'social-count-plus' ) );
 
 		// Displays option description.
-		if ( isset( $args['description'] ) )
+		if ( isset( $args['description'] ) ) {
 			$html .= sprintf( '<p class="description">%s</p>', $args['description'] );
+		}
 
 		echo $html;
 	}
@@ -836,14 +857,15 @@ class Social_Count_Plus {
 
 		$options = get_option( $menu );
 
-		if ( isset( $options[ $id ] ) )
+		if ( isset( $options[ $id ] ) ) {
 			$current = $options[ $id ];
-		else
+		} else {
 			$current = isset( $args['default'] ) ? $args['default'] : '#ffffff';
+		}
 
 		$html = '';
 		$key = 0;
-		foreach( $args['options'] as $label ) {
+		foreach ( $args['options'] as $label ) {
 
 			$html .= sprintf( '<input type="radio" id="%1$s_%2$s_%3$s" name="%1$s[%2$s]" value="%3$s"%4$s style="display: block; float: left; margin: 10px 10px 0 0;" />', $menu, $id, $key, checked( $current, $key, false ) );
 			$html .= sprintf( '<label for="%1$s_%2$s_%3$s"> <img src="%4$s" alt="%1$s_%2$s_%3$s" /></label><br style="clear: both;margin-bottom: 20px;" />', $menu, $id, $key, plugins_url( 'demos/' . $label , __FILE__ ) );
@@ -851,8 +873,9 @@ class Social_Count_Plus {
 		}
 
 		// Displays option description.
-		if ( isset( $args['description'] ) )
+		if ( isset( $args['description'] ) ) {
 			$html .= sprintf( '<p class="description">%s</p>', $args['description'] );
+		}
 
 		echo $html;
 	}
@@ -870,16 +893,18 @@ class Social_Count_Plus {
 
 		$options = get_option( $menu );
 
-		if ( isset( $options[ $id ] ) )
+		if ( isset( $options[ $id ] ) ) {
 			$current = $options[ $id ];
-		else
+		} else {
 			$current = isset( $args['default'] ) ? $args['default'] : '#333333';
+		}
 
 		$html = sprintf( '<input type="text" id="%1$s" name="%2$s[%1$s]" value="%3$s" class="social-count-plus-color-field" />', $id, $menu, $current );
 
 		// Displays option description.
-		if ( isset( $args['description'] ) )
+		if ( isset( $args['description'] ) ) {
 			$html .= sprintf( '<p class="description">%s</p>', $args['description'] );
+		}
 
 		echo $html;
 	}
@@ -943,9 +968,9 @@ class Social_Count_Plus {
 	 */
 	public function view() {
 		$settings = get_option( 'socialcountplus_settings' );
-		$design = get_option( 'socialcountplus_design' );
-		$count = $this->counter->update_transients();
-		$color = isset( $design['text_color'] ) ? $design['text_color'] : '#333333';
+		$design   = get_option( 'socialcountplus_design' );
+		$count    = $this->counter->update_transients();
+		$color    = isset( $design['text_color'] ) ? $design['text_color'] : '#333333';
 
 		// Sets widget design.
 		$style = '';
@@ -981,7 +1006,7 @@ class Social_Count_Plus {
 				$html .= ( isset( $settings['facebook_active'] ) ) ? $this->get_view_li( 'facebook', 'http://www.facebook.com/' . $settings['facebook_id'], $count['facebook'], __( 'likes', 'social-count-plus' ), $color, $settings ) : '';
 
 				// YouTube counter.
-				$html .= ( isset( $settings['youtube_active'] ) ) ? $this->get_view_li( 'youtube', 'http://www.youtube.com/user/' . $settings['youtube_user'], $count['youtube'], __( 'subscribers', 'social-count-plus' ), $color, $settings ) : '';
+				$html .= ( isset( $settings['youtube_active'] ) ) ? $this->get_view_li( 'youtube', esc_url( $settings['youtube_url'] ), $count['youtube'], __( 'subscribers', 'social-count-plus' ), $color, $settings ) : '';
 
 				// Google Plus counter.
 				$html .= ( isset( $settings['googleplus_active'] ) ) ? $this->get_view_li( 'googleplus', 'https://plus.google.com/' . $settings['googleplus_id'], $count['googleplus'], __( 'followers', 'social-count-plus' ), $color, $settings ) : '';

@@ -3,16 +3,16 @@ Contributors: claudiosanches, felipesantana
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Y8HP99ZJ5Z59L
 Tags: facebook, twitter, youtube, google, instagram, soundcloud, steam, counter, widget, shortcode
 Requires at least: 3.8
-Tested up to: 3.8.1
-Stable tag: 2.8.1
+Tested up to: 3.9
+Stable tag: 2.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Display the counting data of Twitter, Facebook, YouTube, Instagram, Steam Community, SoundCloud posts and comments.
+Display the counting data of Twitter, Facebook, Google+, YouTube, Instagram, Steam Community, SoundCloud posts and comments.
 
 == Description ==
 
-The Social Count Plus performs counting Twitter followers, Facebook fans, YouTube subscribers, Google Plus page followers, Instagram followers, Steam Community group members, SoundCloud follwers, number of posts and comments.
+The Social Count Plus performs counting Twitter followers, Facebook fans, YouTube subscribers, Google+ page/profile followers, Instagram followers, Steam Community group members, SoundCloud follwers, number of posts and comments.
 
 You can view this information via a widget (with account options models icons) or Shortcodes (to be used in posts and pages) or by functions in PHP.
 
@@ -62,75 +62,33 @@ You can contribute to the source code in our [GitHub](https://github.com/claudio
 * Steam counter by [Tadas Krivickas](http://wordpress.org/support/profile/tkrivickas)
 * Instagram access token generator by [Pedro Rogério](http://www.pinceladasdaweb.com.br/)
 
-### Descrição em Português: ###
-
-O Social Count Plus faz a contagem de seguidores no Twitter, fãs no Facebook, assinantes do YouTube, seguidores em páginas do Google Plus, seguidores no Instagram, membros em grupos do Steam Community, seguidores no SoundCloud, total de posts e comentários.
-
-Você pode exibir estas contagens através de um widget, com Shortcodes ou por funções em PHP.
-
-Os resultados dos contadores são armazenados em cache e os novos valores são verificados apenas uma vez por dia. Este cache pode ser limpo quando publicado um novo post.
-
-O cache não só evita que o seu blog estar buscando novos resultados cada vez que uma página é carregada, mas também impede o colapso dos serviços do Twitter e Facebook, se um desses serviços não responder, o contador exibe a última contagem que foi bem sucedida.
-
-#### Shortcodes ####
-
-Exibe apenas a contagem em texto puro:
-
-* Twitter: `[scp code="twitter"]`
-* Facebook: `[scp code="facebook"]`
-* YouTube: `[scp code="youtube"]`
-* Google Plus: `[scp code="googleplus"]`
-* Instagram: `[scp code="instagram"]`
-* Steam: `[scp code="steam"]`
-* SoundCloud: `[scp code="soundcloud"]`
-* Posts: `[scp code="posts"]`
-* Comments: `[scp code="comments"]`
-
-#### Funções ####
-
-Exibe apenas a contagem em texto puro:
-
-* Twitter: `<?php echo get_scp_twitter(); ?>`
-* Facebook: `<?php echo get_scp_facebook(); ?>`
-* YouTube: `<?php echo get_scp_youtube(); ?>`
-* Google Plus: `<?php echo get_scp_googleplus(); ?>`
-* Instagram: `<?php echo get_scp_instagram(); ?>`
-* Steam: `<?php echo get_scp_steam(); ?>`
-* SoundCloud: `<?php echo get_scp_soundcloud(); ?>`
-* Posts: `<?php echo get_scp_posts(); ?>`
-* Comments: `<?php echo get_scp_comments(); ?>`
-
-Exibe o widget com ícones:
-
-* Widget: `<?php echo get_scp_widget(); ?>`
-
-#### Coloborar ####
-
-Você pode contribuir com código-fonte em nossa página no [GitHub](https://github.com/claudiosmweb/social-count-plus).
-
-#### Créditos ####
-
-* Pacote de icons flat, Icones do Instagram, SoundCloud e Steam por [Felipe Santana](http://wordpress.org/support/profile/felipesantana)
-* Contador do Steam por [Tadas Krivickas](http://wordpress.org/support/profile/tkrivickas)
-* Gerador de Access Token do Instagram por [Pedro Rogério](http://www.pinceladasdaweb.com.br/)
-
 == Installation ==
 
 * Upload plugin files to your plugins folder, or install using WordPress built-in Add New Plugin installer;
 * Activate the plugin;
 * Navigate to Settings -> Social Count Plus and fill the plugin options.
 
-### Instalação em Português: ###
-
-* Envie arquivos do plugin para a pasta de plugins, ou instale usando o o instalador do WordPress em Plugins -> Adicionar Novo;
-* Ative o plugin;
-* Navegue até Configurações -> Social Count Plus e preencha as opções do plugin.
-
 == Frequently Asked Questions ==
 
 = What is the plugin license? =
 
 * This plugin is released under a GPL license.
+
+= Google+ is not working? =
+
+You probably have not been able to generate API keys as it should.
+
+You can test the API key with the following link:
+
+	https://www.googleapis.com/plus/v1/people/+ClaudioSanches?key=API_KEY_HERE
+
+The answer must contain the following line:
+
+	"circledByCount": XXX,
+
+If you do not find anything related to `circledByCount` means that your API key is incorrect, but do not worry, just follow the steps in this video to generate an valid API key:
+
+https://www.youtube.com/watch?v=kj078EN_hpU
 
 = Why the counter Facebook does not leave the ground? =
 
@@ -149,29 +107,6 @@ Example:
 	add_filter( 'social_count_plus_transient_time', 'social_count_plus_custom_transient_time' );
 
 
-### FAQ em Português: ###
-
-= Qual é a licença do plugin? =
-
-* Este plugin esta licenciado como GPL.
-
-= Porque o contador do Facebook não sai do zero? =
-
-* Porque você precisa ter uma fã page com mais de 15 pessoas nela para funcionar a API do Facebook.
-
-= Como alterar a quantidade de vezes que o contador é atualizado por dia? =
-
-Você pode modificar usando o filtro `social_count_plus_transient_time`.  
-Exemplo:
-
-
-	function social_count_plus_custom_transient_time( $time ) {
-		return 43200; // 12 horas em segundos.
-	}
-
-	add_filter( 'social_count_plus_transient_time', 'social_count_plus_custom_transient_time' );
-
-
 == Screenshots ==
 
 1. Plugin settings.
@@ -180,6 +115,23 @@ Exemplo:
 4. Widget.
 
 == Changelog ==
+
+= 2.9.1 - 30/05/2014 =
+
+* Improved the counter styles.
+* Changed the default options in plugin install.
+
+= 2.9.0 - 05/04/2014 =
+
+* Added new Google Plus API.
+* Added Google Plus API key option.
+* Fixed the Google Plus counter, now is possible grab the pages and profiles followers count.
+
+= 2.8.2 - 26/03/2014 =
+
+* Improved the Facebook counter.
+* Improved the validation of data for all counters.
+* Added a option to enter with you YouTube Channel URL.
 
 = 2.8.1 - 05/02/2014 =
 
@@ -294,9 +246,11 @@ Exemplo:
 
 == Upgrade Notice ==
 
-= 2.8.1 =
+= 2.9.0 =
 
-* Added Swedish translation by [Ramrod](http://profiles.wordpress.org/ramrod).
+* Added new Google Plus API.
+* Added Google Plus API key option.
+* Fixed the Google Plus counter, now is possible grab the pages and profiles followers count.
 
 == License ==
 
