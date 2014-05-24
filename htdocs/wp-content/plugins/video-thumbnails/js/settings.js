@@ -10,8 +10,30 @@ jQuery(function ($) {
 			if (response) {
 				$('#custom_field').val(response);
 			} else {
-				alert('We were unable to find a video in the custom fields of your most recently updated post.');
+				alert(video_thumbnails_settings_language.detection_failed);
 			}
+		});
+	});
+
+	$('#test-video-thumbnail-saving-media').on('click',function(e) {
+		$('#media-test-result').html( '<p>' + video_thumbnails_settings_language.working + '</p>' );
+		e.preventDefault();
+		var data = {
+			action: 'video_thumbnail_image_download_test'
+		};
+		$.post(ajaxurl, data, function(response){
+			$('#media-test-result').html(response);
+		});
+	});
+
+	$('#delete-video-thumbnail-test-images').on('click',function(e) {
+		$('#media-test-result').html( '<p>' + video_thumbnails_settings_language.working + '</p>' );
+		e.preventDefault();
+		var data = {
+			action: 'video_thumbnail_delete_test_images'
+		};
+		$.post(ajaxurl, data, function(response){
+			$('#media-test-result').html(response);
 		});
 	});
 
@@ -22,7 +44,7 @@ function test_video_thumbnail( test_type ) {
 	var data = {
 		action: 'video_thumbnail_' + test_type + '_test'
 	};
-	document.getElementById( test_type + '-test' ).innerHTML = 'Working...';
+	document.getElementById( test_type + '-test' ).innerHTML = video_thumbnails_settings_language.working;
 	jQuery.post(ajaxurl, data, function(response){
 		document.getElementById( test_type + '-test' ).innerHTML = response;
 	});
@@ -33,7 +55,7 @@ function test_video_thumbnail_markup_detection() {
 		action: 'video_thumbnail_markup_detection_test',
 		markup: jQuery('#markup-input').val()
 	};
-	document.getElementById( 'markup-test-result' ).innerHTML = '<p>Working...</p>';
+	document.getElementById( 'markup-test-result' ).innerHTML = '<p>' + video_thumbnails_settings_language.working + '</p>';
 	jQuery.post(ajaxurl, data, function(response){
 		document.getElementById( 'markup-test-result' ).innerHTML = response;
 	});
@@ -41,13 +63,13 @@ function test_video_thumbnail_markup_detection() {
 
 // Clear all video thumbnails
 function clear_all_video_thumbnails( nonce ) {
-	var confimation_result = confirm("Are you sure you want to clear all video thumbnails? This cannot be undone.");
+	var confimation_result = confirm(video_thumbnails_settings_language.clear_all_confirmation);
 	if (confimation_result){
 		var data = {
 			action: 'clear_all_video_thumbnails',
 			nonce: nonce
 		};
-		document.getElementById( 'clear-all-video-thumbnails-result' ).innerHTML = '<p>Working...</p>';
+		document.getElementById( 'clear-all-video-thumbnails-result' ).innerHTML = '<p>' + video_thumbnails_settings_language.working + '</p>';
 		jQuery.post(ajaxurl, data, function(response){
 			document.getElementById( 'clear-all-video-thumbnails-result' ).innerHTML = response;
 		});

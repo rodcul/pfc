@@ -43,7 +43,8 @@ class Video_Thumbnails_Settings {
 		add_action( 'wp_ajax_clear_all_video_thumbnails', array( &$this, 'ajax_clear_all_callback' ) );
 		// Ajax test callbacks
 		add_action( 'wp_ajax_video_thumbnail_provider_test', array( &$this, 'provider_test_callback' ) ); // Provider test
-		add_action( 'wp_ajax_video_thumbnail_saving_media_test', array( &$this, 'saving_media_test_callback' ) ); // Saving media test
+		add_action( 'wp_ajax_video_thumbnail_image_download_test', array( &$this, 'image_download_test_callback' ) ); // Saving media test
+		add_action( 'wp_ajax_video_thumbnail_delete_test_images', array( &$this, 'delete_test_images_callback' ) ); // Delete test images
 		add_action( 'wp_ajax_video_thumbnail_markup_detection_test', array( &$this, 'markup_detection_test_callback' ) ); // Markup input test
 		// Settings page actions
 		if ( isset ( $_GET['page'] ) && ( $_GET['page'] == 'video_thumbnails' ) ) {
@@ -126,8 +127,8 @@ class Video_Thumbnails_Settings {
 
 	function admin_menu() {
 		add_options_page(
-			'Video Thumbnail Options',
-			'Video Thumbnails',
+			__( 'Video Thumbnails Options', 'video-thumbnails' ),
+			__( 'Video Thumbnails', 'video-thumbnails' ),
 			'manage_options',
 			'video_thumbnails',
 			array( &$this, 'options_page' )
@@ -136,6 +137,11 @@ class Video_Thumbnails_Settings {
 
 	function admin_scripts() {
 		wp_enqueue_script( 'video_thumbnails_settings', plugins_url( 'js/settings.js' , VIDEO_THUMBNAILS_PATH . '/video-thumbnails.php' ), array( 'jquery' ), VIDEO_THUMBNAILS_VERSION );
+		wp_localize_script( 'video_thumbnails_settings', 'video_thumbnails_settings_language', array(
+			'detection_failed'       => __( 'We were unable to find a video in the custom fields of your most recently updated post.', 'video-thumbnails' ),
+			'working'                => __( 'Working...', 'video-thumbnails' ),
+			'clear_all_confirmation' => __( 'Are you sure you want to clear all video thumbnails? This cannot be undone.', 'video-thumbnails' ),
+		) );
 	}
 
 	function custom_field_detection_callback() {
@@ -164,6 +170,7 @@ class Video_Thumbnails_Settings {
 	}
 
 	function ajax_clear_all_callback() {
+		if ( !current_user_can( 'manage_options' ) ) die();
 		if ( wp_verify_nonce( $_POST['nonce'], 'clear_all_video_thumbnails' ) ) {
 			global $wpdb;
 			// Clear images from media library
@@ -182,7 +189,7 @@ class Video_Thumbnails_Settings {
 			$custom_fields_cleared = $wpdb->query( "DELETE FROM $wpdb->postmeta WHERE meta_key='_video_thumbnail'" );
 			echo '<p><span style="color:green">&#10004;</span> ' . sprintf( _n( '1 custom field cleared', '%s custom fields cleared', $custom_fields_cleared, 'video-thumbnails' ), $custom_fields_cleared ) . '</p>';
 		} else {
-			echo '<p><span style="color:red">&#10006;</span> <strong>Error</strong>: Could not verify nonce.</p>';
+			echo '<p><span style="color:red">&#10006;</span> ' . __( '<strong>Error</strong>: Could not verify nonce.', 'video-thumbnails' ) . '</p>';
 		}
 
 		die();
@@ -200,15 +207,17 @@ class Video_Thumbnails_Settings {
 
 	function provider_test_callback() {
 
+		if ( !current_user_can( 'manage_options' ) ) die();
+
 		global $video_thumbnails;
 
 		?>
 			<table class="widefat">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Pass/Fail</th>
-						<th>Result</th>
+						<th><?php _e( 'Name', 'video-thumbnails' ); ?></th>
+						<th><?php _e( 'Pass/Fail', 'video-thumbnails' ); ?></th>
+						<th><?php _e( 'Result', 'video-thumbnails' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -216,13 +225,14 @@ class Video_Thumbnails_Settings {
 			$passed = 0;
 			$failed = 0;
 			foreach ( $video_thumbnails->providers as $provider ) {
-				foreach ( $provider->test_cases as $test_case ) {
+				foreach ( $provider->get_test_cases() as $test_case ) {
 					echo '<tr>';
 					echo '<td><strong>' . $provider->service_name . '</strong> - ' . $test_case['name'] . '</td>';
-					$result = $video_thumbnails->get_first_thumbnail_url( $test_case['markup'] );
+					$markup = apply_filters( 'the_content', $test_case['markup'] );
+					$result = $video_thumbnails->get_first_thumbnail_url( $markup );
 					if ( is_wp_error( $result ) ) {
 						$error_string = $result->get_error_message();
-						echo '<td style="color:red;">&#10007; Failed</td>';
+						echo '<td style="color:red;">&#10007; ' . __( 'Failed', 'video-thumbnails' ) . '</td>';
 						echo '<td>';
 						echo '<div class="error"><p>' . $error_string . '</p></div>';
 						echo '</td>';
@@ -239,15 +249,15 @@ class Video_Thumbnails_Settings {
 						}
 						
 						if ( $matched ) {
-							echo '<td style="color:green;">&#10004; Passed</td>';
+							echo '<td style="color:green;">&#10004; ' . __( 'Passed', 'video-thumbnails' ) . '</td>';
 							$passed++;
 						} else {
-							echo '<td style="color:red;">&#10007; Failed</td>';
+							echo '<td style="color:red;">&#10007; ' . __( 'Failed', 'video-thumbnails' ) . '</td>';
 							$failed++;
 						}
 						echo '<td>';
 						if ( $result ) {
-							echo '<a href="' . $result . '">View Image</a>';
+							echo '<a href="' . $result . '">' . __( 'View Image', 'video-thumbnails' ) . '</a>';
 						}
 						if ( $result_hash ) {
 							echo ' <code>' . $result_hash . '</code>';
@@ -269,49 +279,80 @@ class Video_Thumbnails_Settings {
 		<?php die();
 	} // End provider test callback
 
-	function saving_media_test_callback() {
+	function image_download_test_callback() {
+
+		if ( !current_user_can( 'manage_options' ) ) die();
 
 		// Try saving 'http://img.youtube.com/vi/dMH0bHeiRNg/0.jpg' to media library
 		$attachment_id = Video_Thumbnails::save_to_media_library( 'http://img.youtube.com/vi/dMH0bHeiRNg/0.jpg', 1 );
 		if ( is_wp_error( $attachment_id ) ) {
 			echo '<p><span style="color:red;">&#10006;</span> ' . $attachment_id->get_error_message() . '</p>';
 		} else {
-			echo '<p><span style="color:green;">&#10004;</span>Attachment created with an ID of ' . $attachment_id . '</p>';
-			wp_delete_attachment( $attachment_id, true );
-			echo '<p><span style="color:green;">&#10004;</span>Attachment with an ID of ' . $attachment_id . ' deleted</p>';			
+			update_post_meta( $attachment_id, 'video_thumbnail_test_image', '1' );
+			$image = wp_get_attachment_image_src( $attachment_id, 'full' );
+			echo '<img src="' . $image[0] . '" style="float:left; max-width: 250px; margin-right: 10px;">';
+			echo '<p><span style="color:green;">&#10004;</span> ' . __( 'Attachment created', 'video-thumbnails' ) . '</p>';
+			echo '<p><a href="' . get_edit_post_link( $attachment_id ) . '">' . __( 'View in Media Library', 'video-thumbnails' ) . '</a></p>';
+			echo '<a href="' . $image[0] . '" target="_blank">' . __( 'View full size', 'video-thumbnails' ) . '</a>';
+			echo '<span style="display:block;clear:both;"></span>';
 		}
 
 		die();
 	} // End saving media test callback
 
+	function delete_test_images_callback() {
+
+		if ( !current_user_can( 'manage_options' ) ) die();
+
+		global $wpdb;
+		// Clear images from media library
+		$media_library_items = get_posts( array(
+			'showposts'  => -1,
+			'post_type'  => 'attachment',
+			'meta_key'   => 'video_thumbnail_test_image',
+			'meta_value' => '1',
+			'fields'     => 'ids'
+		) );
+		foreach ( $media_library_items as $item ) {
+			wp_delete_attachment( $item, true );
+		}
+		echo '<p><span style="color:green">&#10004;</span> ' . sprintf( _n( '1 attachment deleted', '%s attachments deleted', count( $media_library_items ), 'video-thumbnails' ), count( $media_library_items ) ) . '</p>';
+
+		die();
+	} // End delete test images callback
+
 	function markup_detection_test_callback() {
+
+		if ( !current_user_can( 'manage_options' ) ) die();
 
 		$new_thumbnail = null;
 
 		global $video_thumbnails;
 
-		$new_thumbnail = $video_thumbnails->get_first_thumbnail_url( stripslashes( $_POST['markup'] ) );
+		$markup = apply_filters( 'the_content', stripslashes( $_POST['markup'] ) );
+
+		$new_thumbnail = $video_thumbnails->get_first_thumbnail_url( $markup );
 
 		if ( $new_thumbnail == null ) {
 			// No thumbnail
-			echo '<p><span style="color:red;">&#10006;</span> No thumbnail found</p>';
+			echo '<p><span style="color:red;">&#10006;</span> ' . __( 'No thumbnail found', 'video-thumbnails' ) . '</p>';
 		} elseif ( is_wp_error( $new_thumbnail ) ) {
 			// Error finding thumbnail
-			echo '<p><span style="color:red;">&#10006;</span> Error: ' . $new_thumbnail->get_error_message() . '</p>';
+			echo '<p><span style="color:red;">&#10006;</span> ' . __( 'Error Details:', 'video-thumbnails' ) . ' ' . $new_thumbnail->get_error_message() . '</p>';
 		} else {
 			// Found a thumbnail
 			$remote_response = wp_remote_head( $new_thumbnail );
 			if ( is_wp_error( $remote_response ) ) {
 				// WP Error trying to read image from remote server
-				echo '<p><span style="color:red;">&#10006;</span> Thumbnail found, but there was an error retrieving the URL.</p>';
-				echo '<p>Error Details: ' . $remote_response->get_error_message() . '</p>';
+				echo '<p><span style="color:red;">&#10006;</span> ' . __( 'Thumbnail found, but there was an error retrieving the URL.', 'video-thumbnails' ) . '</p>';
+				echo '<p>' . __( 'Error Details:', 'video-thumbnails' ) . ' ' . $remote_response->get_error_message() . '</p>';
 			} elseif ( $remote_response['response']['code'] != '200' ) {
 				// Response code isn't okay
-				echo '<p><span style="color:red;">&#10006;</span> Thumbnail found, but it may not exist on the source server. If opening the URL below in your web browser returns an error, the source is providing an invalid URL.</p>';
-				echo '<p>Thumbnail URL: <a href="' . $new_thumbnail . '" target="_blank">' . $new_thumbnail . '</a>';
+				echo '<p><span style="color:red;">&#10006;</span> ' . __( 'Thumbnail found, but it may not exist on the source server. If opening the URL below in your web browser returns an error, the source is providing an invalid URL.', 'video-thumbnails' ) . '</p>';
+				echo '<p>' . __( 'Thumbnail URL:', 'video-thumbnails' ) . ' <a href="' . $new_thumbnail . '" target="_blank">' . $new_thumbnail . '</a>';
 			} else {
 				// Everything is okay!
-				echo '<p><span style="color:green;">&#10004;</span> Thumbnail found! Image should appear below. <a href="' . $new_thumbnail . '" target="_blank">View full size</a></p>';
+				echo '<p><span style="color:green;">&#10004;</span> ' . __( 'Thumbnail found! Image should appear below.', 'video-thumbnails' ) . ' <a href="' . $new_thumbnail . '" target="_blank">' . __( 'View full size', 'video-thumbnails' ) . '</a></p>';
 				echo '<p><img src="' . $new_thumbnail . '" style="max-width: 500px;"></p>';
 			}
 		}
@@ -322,19 +363,19 @@ class Video_Thumbnails_Settings {
 	function initialize_options() {
 		add_settings_section(  
 			'general_settings_section',
-			'General Settings',
+			__( 'General Settings', 'video-thumbnails' ),
 			array( &$this, 'general_settings_callback' ),
 			'video_thumbnails'
 		);
 		$this->add_checkbox_setting(
 			'save_media',
-			'Save Thumbnails to Media Library',
-			'Checking this option will download video thumbnails to your server'
+			__( 'Save Thumbnails to Media Library', 'video-thumbnails' ),
+			__( 'Checking this option will download video thumbnails to your server', 'video-thumbnails' )
 		);
 		$this->add_checkbox_setting(
 			'set_featured',
-			'Automatically Set Featured Image',
-			'Check this option to automatically set video thumbnails as the featured image (requires saving to media library)'
+			__( 'Automatically Set Featured Image', 'video-thumbnails' ),
+			__( 'Check this option to automatically set video thumbnails as the featured image (requires saving to media library)', 'video-thumbnails' )
 		);
 		// Get post types
 		$post_types = get_post_types( null, 'names' );
@@ -342,13 +383,13 @@ class Video_Thumbnails_Settings {
 		$post_types = array_diff( $post_types, array( 'attachment', 'revision', 'nav_menu_item' ) );
 		$this->add_multicheckbox_setting(
 			'post_types',
-			'Post Types',
+			__( 'Post Types', 'video-thumbnails' ),
 			$post_types
 		);
 		$this->add_text_setting(
 			'custom_field',
-			'Custom Field (optional)',
-			'<a href="#" class="button" id="vt_detect_custom_field">Automatically Detect</a> Enter the name of the custom field where your embed code or video URL is stored.'
+			__( 'Custom Field (optional)', 'video-thumbnails' ),
+			'<a href="#" class="button" id="vt_detect_custom_field">' . __( 'Automatically Detect', 'video-thumbnails' ) . '</a> ' . __( 'Enter the name of the custom field where your embed code or video URL is stored.', 'video-thumbnails' )
 		);
 		register_setting( 'video_thumbnails', 'video_thumbnails', array( &$this, 'sanitize_callback' ) );
 	}
@@ -378,7 +419,7 @@ class Video_Thumbnails_Settings {
 	}  
 
 	function general_settings_callback() {  
-		echo '<p>These options configure where the plugin will search for videos and what to do with thumbnails once found.</p>';  
+		echo '<p>' . __( 'These options configure where the plugin will search for videos and what to do with thumbnails once found.', 'video-thumbnails' ) . '</p>';  
 	}
 
 	function add_checkbox_setting( $slug, $name, $description ) {
@@ -451,31 +492,31 @@ class Video_Thumbnails_Settings {
 	function options_page() {
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+			wp_die( __( 'You do not have sufficient permissions to access this page.', 'video-thumbnails' ) );
 		}
 
 		?><div class="wrap">
 
-			<div id="icon-options-general" class="icon32"></div><h2>Video Thumbnails Options</h2>
+			<div id="icon-options-general" class="icon32"></div><h2><?php _e( 'Video Thumbnails Options', 'video-thumbnails' ); ?></h2>
 
 			<?php $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'general_settings'; ?> 
 			<h2 class="nav-tab-wrapper">
-				<a href="?page=video_thumbnails&tab=general_settings" class="nav-tab <?php echo $active_tab == 'general_settings' ? 'nav-tab-active' : ''; ?>">General</a>
-				<a href="?page=video_thumbnails&tab=provider_settings" class="nav-tab <?php echo $active_tab == 'provider_settings' ? 'nav-tab-active' : ''; ?>">Providers</a>
-				<a href="?page=video_thumbnails&tab=mass_actions" class="nav-tab <?php echo $active_tab == 'mass_actions' ? 'nav-tab-active' : ''; ?>">Mass Actions</a>
-				<a href="?page=video_thumbnails&tab=debugging" class="nav-tab <?php echo $active_tab == 'debugging' ? 'nav-tab-active' : ''; ?>">Debugging</a>
-				<a href="?page=video_thumbnails&tab=support" class="nav-tab <?php echo $active_tab == 'support' ? 'nav-tab-active' : ''; ?>">Support</a>
+				<a href="?page=video_thumbnails&tab=general_settings" class="nav-tab <?php echo $active_tab == 'general_settings' ? 'nav-tab-active' : ''; ?>"><?php _e( 'General', 'video-thumbnails' ); ?></a>
+				<a href="?page=video_thumbnails&tab=provider_settings" class="nav-tab <?php echo $active_tab == 'provider_settings' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Providers', 'video-thumbnails' ); ?></a>
+				<a href="?page=video_thumbnails&tab=mass_actions" class="nav-tab <?php echo $active_tab == 'mass_actions' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Mass Actions', 'video-thumbnails' ); ?></a>
+				<a href="?page=video_thumbnails&tab=debugging" class="nav-tab <?php echo $active_tab == 'debugging' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Debugging', 'video-thumbnails' ); ?></a>
+				<a href="?page=video_thumbnails&tab=support" class="nav-tab <?php echo $active_tab == 'support' ? 'nav-tab-active' : ''; ?>"><?php _e( 'Support', 'video-thumbnails' ); ?></a>
 			</h2>
 
 			<?php
 			// Main settings
 			if ( $active_tab == 'general_settings' ) {
 			?>
-			<h3>Getting started</h3>
+			<h3><?php _e( 'Getting started', 'video-thumbnails' ); ?></h3>
 
-			<p>If your theme supports post thumbnails, just leave "Save Thumbnails to Media Library" and "Automatically Set Featured Image" enabled, then select what post types you'd like scanned for videos.</p>
+			<p><?php _e( 'If your theme supports post thumbnails, just leave "Save Thumbnails to Media Library" and "Automatically Set Featured Image" enabled, then select what post types you\'d like scanned for videos.', 'video-thumbnails' ); ?></p>
 
-			<p>For more detailed instructions, check out the page for <a href="http://wordpress.org/extend/plugins/video-thumbnails/">Video Thumbnails on the official plugin directory</a>.</p>
+			<p><?php _e( 'For more detailed instructions, check out the page for <a href="http://wordpress.org/extend/plugins/video-thumbnails/">Video Thumbnails on the official plugin directory</a>.', 'video-thumbnails' ); ?></p>
 
 			<form method="post" action="options.php">  
 				<?php settings_fields( 'video_thumbnails' ); ?>  
@@ -503,17 +544,17 @@ class Video_Thumbnails_Settings {
 			// Scan all posts
 			if ( $active_tab == 'mass_actions' ) {
 			?>
-			<h3>Scan All Posts</h3>
+			<h3><?php _e( 'Scan All Posts', 'video-thumbnails' ); ?></h3>
 
-			<p>Scan all of your past posts for video thumbnails. Be sure to save any settings before running the scan.</p>
+			<p><?php _e( 'Scan all of your past posts for video thumbnails. Be sure to save any settings before running the scan.', 'video-thumbnails' ); ?></p>
 
-			<p><a class="button-primary" href="<?php echo admin_url( 'tools.php?page=video-thumbnails-bulk' ); ?>">Scan Past Posts</a></p>
+			<p><a class="button-primary" href="<?php echo admin_url( 'tools.php?page=video-thumbnails-bulk' ); ?>"><?php _e( 'Scan Past Posts', 'video-thumbnails' ); ?></a></p>
 
-			<h3>Clear all Video Thumbnails</h3>
+			<h3><?php _e( 'Clear all Video Thumbnails', 'video-thumbnails' ); ?></h3>
 
-			<p>This will clear the video thumbnail field for all posts and delete any video thumbnail attachments. Note: This only works for attachments added using version 2.0 or later.</p>
+			<p><?php _e( 'This will clear the video thumbnail field for all posts and delete any video thumbnail attachments. Note: This only works for attachments added using version 2.0 or later.', 'video-thumbnails' ); ?></p>
 
-			<p><input type="submit" class="button-primary" onclick="clear_all_video_thumbnails('<?php echo wp_create_nonce( 'clear_all_video_thumbnails' ); ?>');" value="Clear Video Thumbnails" /></p>
+			<p><input type="submit" class="button-primary" onclick="clear_all_video_thumbnails('<?php echo wp_create_nonce( 'clear_all_video_thumbnails' ); ?>');" value="<?php esc_attr_e( 'Clear Video Thumbnails', 'video-thumbnails' ); ?>" /></p>
 
 			<div id="clear-all-video-thumbnails-result"></div>
 
@@ -524,37 +565,40 @@ class Video_Thumbnails_Settings {
 			if ( $active_tab == 'debugging' ) {
 			?>
 
-			<p>Use these tests to help diagnose any problems. Please include results when requesting support.</p>
+			<p><?php _e( 'Use these tests to help diagnose any problems. Please include results when requesting support.', 'video-thumbnails' ); ?></p>
 
-			<h3>Test Thumbnail Providers</h3>
+			<h3><?php _e( 'Test Video Providers', 'video-thumbnails' ); ?></h3>
 
-			<p>This test automatically searches a sample for every type of video supported and compares it to the expected value. Sometimes tests may fail due to API rate limits.</p>
+			<p><?php _e( 'This test automatically searches a sample for every type of video supported and compares it to the expected value. Sometimes tests may fail due to API rate limits.', 'video-thumbnails' ); ?></p>
 
 			<div id="provider-test">
-				<p><input type="submit" class="button-primary" onclick="test_video_thumbnail('provider');" value="Test Providers" /></p>
+				<p><input type="submit" class="button-primary" onclick="test_video_thumbnail('provider');" value="<?php esc_attr_e( 'Test Video Providers', 'video-thumbnails' ); ?>" /></p>
 			</div>
 
-			<h3>Test Markup for Video</h3>
+			<h3><?php _e( 'Test Markup for Video', 'video-thumbnails' ); ?></h3>
 
-			<p>Copy and paste an embed code below to see if a video is detected.</p>
+			<p><?php _e( 'Copy and paste an embed code below to see if a video is detected.', 'video-thumbnails' ); ?></p>
 
 			<textarea id="markup-input" cols="50" rows="5"></textarea>
 
-			<p><input type="submit" class="button-primary" onclick="test_video_thumbnail_markup_detection();" value="Scan For Thumbnail" /></p>
+			<p><input type="submit" class="button-primary" onclick="test_video_thumbnail_markup_detection();" value="<?php esc_attr_e( 'Scan For Thumbnail', 'video-thumbnails' ); ?>" /></p>
 
 			<div id="markup-test-result"></div>
 
-			<h3>Test Saving to Media Library</h3>
+			<h3><?php _e( 'Test Saving to Media Library', 'video-thumbnails' ); ?></h3>
 
-			<p>This test checks for issues with the process of saving a remote thumbnail to your local media library.</p>
+			<p><?php _e( 'This test checks for issues with the process of saving a remote thumbnail to your local media library.', 'video-thumbnails' ); ?></p>
 
-			<p>Also be sure to test that you can manually upload an image to your site. If you're unable to upload images, you may need to <a href="http://codex.wordpress.org/Changing_File_Permissions">change file permissions</a>.</p>
+			<p><?php _e( 'Also be sure to test that you can manually upload an image to your site. If you\'re unable to upload images, you may need to <a href="http://codex.wordpress.org/Changing_File_Permissions">change file permissions</a>.', 'video-thumbnails' ); ?></p>
 
-			<div id="saving_media-test">
-				<p><input type="submit" class="button-primary" onclick="test_video_thumbnail('saving_media');" value="Test Image Downloading" /></p>
-			</div>
+			<p>
+				<input type="submit" id="test-video-thumbnail-saving-media" class="button-primary" value="<?php esc_attr_e( 'Download Test Image', 'video-thumbnails' ); ?>" />
+				<input type="submit" id="delete-video-thumbnail-test-images" class="button" value="<?php esc_attr_e( 'Delete Test Images', 'video-thumbnails' ); ?>" />
+			</p>
 
-			<h3>Installation Information</h3>
+			<div id="media-test-result"></div>
+
+			<h3><?php _e( 'Installation Information', 'video-thumbnails' ); ?></h3>
 			<table class="widefat">
 				<thead>
 					<tr>
@@ -565,32 +609,32 @@ class Video_Thumbnails_Settings {
 				</thead>
 				<tbody>
 					<tr>
-						<td><strong>WordPress Version</strong></td>
+						<td><strong><?php _e( 'WordPress Version', 'video-thumbnails' ); ?></strong></td>
 						<td><?php echo get_bloginfo( 'version' ); ?></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><strong>Video Thumbnails Version</strong></td>
+						<td><strong><?php _e( 'Video Thumbnails Version', 'video-thumbnails' ); ?></strong></td>
 						<td><?php echo VIDEO_THUMBNAILS_VERSION; ?></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><strong>Video Thumbnails Settings Version</strong></td>
+						<td><strong><?php _e( 'Video Thumbnails Settings Version', 'video-thumbnails' ); ?></strong></td>
 						<td><?php echo $this->options['version']; ?></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><strong>PHP Version</strong></td>
+						<td><strong><?php _e( 'PHP Version', 'video-thumbnails' ); ?></strong></td>
 						<td><?php echo PHP_VERSION; ?></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><strong>Post Thumbnails</strong></td>
-						<td><?php if ( current_theme_supports( 'post-thumbnails' ) ) : ?><span style="color:green">&#10004;</span> Your theme supports post thumbnails.<?php else: ?><span style="color:red">&#10006;</span> Your theme doesn't support post thumbnails, you'll need to make modifications or switch to a different theme. <a href="http://codex.wordpress.org/Post_Thumbnails">More info</a><?php endif; ?></td>
+						<td><strong><?php _e( 'Post Thumbnails', 'video-thumbnails' ); ?></strong></td>
+						<td><?php if ( current_theme_supports( 'post-thumbnails' ) ) : ?><span style="color:green">&#10004;</span> <?php _e( 'Your theme supports post thumbnails.', 'video-thumbnails' ); ?><?php else: ?><span style="color:red">&#10006;</span> <?php _e( 'Your theme does not support post thumbnails, you\'ll need to make modifications or switch to a different theme. <a href="http://codex.wordpress.org/Post_Thumbnails">More info</a>', 'video-thumbnails' ); ?><?php endif; ?></td>
 						<td></td>
 					</tr>
 					<tr>
-						<td><strong>Providers</strong></td>
+						<td><strong><?php _e( 'Video Providers', 'video-thumbnails' ); ?></strong></td>
 						<td>
 							<?php global $video_thumbnails; ?>
 								<?php $provider_names = array(); foreach ( $video_thumbnails->providers as $provider ) { $provider_names[] = $provider->service_name; }; ?>
@@ -629,8 +673,8 @@ class Video_Thumbnails_Settings {
 		?>
 		<div style="width: 250px; margin: 20px 0; padding: 0 20px; background: #fff; border: 1px solid #dfdfdf; text-align: center;">
 			<div>
-				<p>Support video thumbnails and unlock additional features</p>
-				<p><a href="https://refactored.co/plugins/video-thumbnails" class="button button-primary button-large">Go Pro</a></p>
+				<p><?php _e( 'Support video thumbnails and unlock additional features', 'video-thumbnails' ); ?></p>
+				<p><a href="https://refactored.co/plugins/video-thumbnails" class="button button-primary button-large"><?php _e( 'Go Pro', 'video-thumbnails' ); ?></a></p>
 			</div>
 		</div>
 		<?php

@@ -35,15 +35,17 @@ class VK_Thumbnails extends Video_Thumbnails_Providers {
 
 	// Regex strings
 	public $regexes = array(
-		'#(//(?:www\.)?vk\.com/video_ext\.php\?oid=\-?[0-9]+&id=\-?[0-9]+&hash=[0-9a-zA-Z]+)#', // URL
+		'#(//(?:www\.)?vk\.com/video_ext\.php\?oid=\-?[0-9]+(?:&|&\#038;|&amp;)id=\-?[0-9]+(?:&|&\#038;|&amp;)hash=[0-9a-zA-Z]+)#', // URL
 	);
 
 	// Thumbnail URL
 	public function get_thumbnail_url( $id ) {
 		$request = "http:$id";
+		$request = html_entity_decode( $request );
 		$response = wp_remote_get( $request, array( 'sslverify' => false ) );
+		$result = false;
 		if( is_wp_error( $response ) ) {
-			$result = new WP_Error( 'vk_info_retrieval', __( 'Error retrieving video information from the URL <a href="' . $request . '">' . $request . '</a> using <code>wp_remote_get()</code><br />If opening that URL in your web browser returns anything else than an error page, the problem may be related to your web server and might be something your host administrator can solve.<br />Details: ' . $response->get_error_message() ) );
+			$result = $this->construct_info_retrieval_error( $request, $response );
 		} else {
 			$doc = new DOMDocument();
 			@$doc->loadHTML( $response['body'] );
@@ -60,14 +62,16 @@ class VK_Thumbnails extends Video_Thumbnails_Providers {
 	}
 
 	// Test cases
-	public $test_cases = array(
-		array(
-			'markup'        => '<iframe src="http://vk.com/video_ext.php?oid=157000410&id=164106383&hash=0fdb5f49218be7c2&hd=1" width="607" height="360" frameborder="0"></iframe>',
-			'expected'      => 'http://cs513416.vk.me/u157000410/video/l_73b292cc.jpg',
-			'expected_hash' => '6d4b086ff1a55c9b48f56bc7848e6c84',
-			'name'          => 'iFrame'
-		),
-	);
+	public static function get_test_cases() {
+		return array(
+			array(
+				'markup'        => '<iframe src="http://vk.com/video_ext.php?oid=220943440&id=168591360&hash=75a37bd3930f4fab&hd=1" width="607" height="360" frameborder="0"></iframe>',
+				'expected'      => 'http://cs540302.vk.me/u220943440/video/l_afc9770f.jpg',
+				'expected_hash' => 'fd8c2af4ad5cd4e55afe129d80b42d8b',
+				'name'          => __( 'iFrame Embed', 'video-thumbnails' )
+			),
+		);
+	}
 
 }
 

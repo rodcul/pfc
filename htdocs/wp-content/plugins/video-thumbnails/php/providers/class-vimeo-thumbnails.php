@@ -73,10 +73,10 @@ class Vimeo_Thumbnails extends Video_Thumbnails_Providers {
 	// Thumbnail URL
 	public function get_thumbnail_url( $id ) {
 		// Get our settings
-		$client_id = ( isset( $this->options['client_id'] ) && $this->options['client_id'] != '' ? $this->options['client_id'] : false );
-		$client_secret = ( isset( $this->options['client_secret'] ) && $this->options['client_secret'] != '' ? $this->options['client_secret'] : false );
-		$access_token = ( isset( $this->options['access_token'] ) && $this->options['access_token'] != '' ? $this->options['access_token'] : false );
-		$access_token_secret = ( isset( $this->options['access_token_secret'] ) && $this->options['access_token_secret'] != '' ? $this->options['access_token_secret'] : false );
+		$client_id = ( isset( $this ) && isset( $this->options['client_id'] ) && $this->options['client_id'] != '' ? $this->options['client_id'] : false );
+		$client_secret = ( isset( $this ) && isset( $this->options['client_secret'] ) && $this->options['client_secret'] != '' ? $this->options['client_secret'] : false );
+		$access_token = ( isset( $this ) && isset( $this->options['access_token'] ) && $this->options['access_token'] != '' ? $this->options['access_token'] : false );
+		$access_token_secret = ( isset( $this ) && isset( $this->options['access_token_secret'] ) && $this->options['access_token_secret'] != '' ? $this->options['access_token_secret'] : false );
 		// If API credentials are entered, use the API
 		if ( $client_id && $client_secret && $access_token && $access_token_secret ) {
 			$vimeo = new phpVimeo( $this->options['client_id'], $this->options['client_secret'] );
@@ -87,11 +87,11 @@ class Vimeo_Thumbnails extends Video_Thumbnails_Providers {
 			$request = "http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/$id";
 			$response = wp_remote_get( $request, array( 'sslverify' => false ) );
 			if( is_wp_error( $response ) ) {
-				$result = new WP_Error( 'vimeo_info_retrieval', __( 'Error retrieving video information from the URL <a href="' . $request . '">' . $request . '</a> using <code>wp_remote_get()</code><br />If opening that URL in your web browser returns anything else than an error page, the problem may be related to your web server and might be something your host administrator can solve.<br />Details: ' . $response->get_error_message() ) );
+				$result = $this->construct_info_retrieval_error( $request, $response );
 			} elseif ( $response['response']['code'] == 404 ) {
-				$result = new WP_Error( 'vimeo_info_retrieval', __( 'The Vimeo endpoint located at <a href="' . $request . '">' . $request . '</a> returned a 404 error.<br />Details: ' . $response['response']['message'] ) );
+				$result = new WP_Error( 'vimeo_info_retrieval', __( 'The Vimeo endpoint located at <a href="' . $request . '">' . $request . '</a> returned a 404 error.<br />Details: ' . $response['response']['message'], 'video-thumbnails' ) );
 			} elseif ( $response['response']['code'] == 403 ) {
-				$result = new WP_Error( 'vimeo_info_retrieval', __( 'The Vimeo endpoint located at <a href="' . $request . '">' . $request . '</a> returned a 403 error.<br />This can occur when a video has embedding disabled or restricted to certain domains. Try entering API credentials in the provider settings.' ) );
+				$result = new WP_Error( 'vimeo_info_retrieval', __( 'The Vimeo endpoint located at <a href="' . $request . '">' . $request . '</a> returned a 403 error.<br />This can occur when a video has embedding disabled or restricted to certain domains. Try entering API credentials in the provider settings.', 'video-thumbnails' ) );
 			} else {
 				$result = json_decode( $response['body'] );
 				$result = $result->thumbnail_url;
@@ -101,26 +101,28 @@ class Vimeo_Thumbnails extends Video_Thumbnails_Providers {
 	}
 
 	// Test cases
-	public $test_cases = array(
-		array(
-			'markup'        => '<iframe src="http://player.vimeo.com/video/41504360" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
-			'expected'      => 'http://b.vimeocdn.com/ts/287/850/287850781_1280.jpg',
-			'expected_hash' => 'c60989d7ef599cfd07ec196c35a43623',
-			'name'          => 'iFrame'
-		),
-		array(
-			'markup'        => '<object width="500" height="281"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=41504360&amp;force_embed=1&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=41504360&amp;force_embed=1&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="500" height="281"></embed></object>',
-			'expected'      => 'http://b.vimeocdn.com/ts/287/850/287850781_1280.jpg',
-			'expected_hash' => 'c60989d7ef599cfd07ec196c35a43623',
-			'name'          => 'Old embed'
-		),
-		array(
-			'markup'        => 'https://vimeo.com/channels/soundworkscollection/44520894',
-			'expected'      => 'http://b.vimeocdn.com/ts/313/130/313130530_640.jpg',
-			'expected_hash' => 'e9fd72872a39272f6c540ee66b1ecf28',
-			'name'          => 'Channel URL'
-		),
-	);
+	public static function get_test_cases() {
+		return array(
+			array(
+				'markup'        => '<iframe src="http://player.vimeo.com/video/41504360" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>',
+				'expected'      => 'http://i.vimeocdn.com/video/287850781_1280.jpg',
+				'expected_hash' => '5388e0d772b827b0837444b636c9676c',
+				'name'          => __( 'iFrame Embed', 'video-thumbnails' )
+			),
+			array(
+				'markup'        => '<object width="500" height="281"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=41504360&amp;force_embed=1&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=41504360&amp;force_embed=1&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="500" height="281"></embed></object>',
+				'expected'      => 'http://i.vimeocdn.com/video/287850781_1280.jpg',
+				'expected_hash' => '5388e0d772b827b0837444b636c9676c',
+				'name'          => __( 'Flash Embed', 'video-thumbnails' )
+			),
+			array(
+				'markup'        => 'https://vimeo.com/channels/soundworkscollection/44520894',
+				'expected'      => 'http://i.vimeocdn.com/video/313130530_1280.jpg',
+				'expected_hash' => '32f742bbe980e5d98d8aa0256026b459',
+				'name'          => __( 'Channel URL', 'video-thumbnails' )
+			),
+		);
+	}
 
 }
 

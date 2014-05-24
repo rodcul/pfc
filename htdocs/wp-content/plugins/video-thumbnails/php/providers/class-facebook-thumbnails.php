@@ -35,30 +35,47 @@ class Facebook_Thumbnails extends Video_Thumbnails_Providers {
 
 	// Regex strings
 	public $regexes = array(
-		'#"http://www\.facebook\.com/v/([0-9]+)"#', // Flash Embed
-		'#"https?://www\.facebook\.com/video/embed\?video_id=([0-9]+)"#' // iFrame Embed
+		'#http://www\.facebook\.com/v/([0-9]+)#', // Flash Embed
+		'#https?://www\.facebook\.com/video/embed\?video_id=([0-9]+)#' // iFrame Embed
 	);
 
 	// Thumbnail URL
 	public function get_thumbnail_url( $id ) {
-		return 'https://graph.facebook.com/' . $id . '/picture';
+		$request = 'https://graph.facebook.com/' . $id . '/picture?redirect=false';
+		$response = wp_remote_get( $request, array( 'sslverify' => false ) );
+		if( is_wp_error( $response ) ) {
+			$result = $this->construct_info_retrieval_error( $request, $response );
+		} else {
+			$result = json_decode( $response['body'] );
+			$result = $result->data->url;
+			$high_res = str_replace( '_t.jpg', '_b.jpg', $result);
+			if ( $high_res != $result ) {
+				$response = wp_remote_head( $high_res );
+				if ( !is_wp_error( $response ) && $response['response']['code'] == '200' ) {
+					$result = $high_res;
+				}
+			}
+		}
+		return $result;
 	}
 
 	// Test cases
-	public $test_cases = array(
-		array(
-			'markup'        => '<object width=420 height=180><param name=allowfullscreen value=true></param><param name=allowscriptaccess value=always></param><param name=movie value="http://www.facebook.com/v/2560032632599"></param><embed src="http://www.facebook.com/v/2560032632599" type="application/x-shockwave-flash" allowscriptaccess=always allowfullscreen=true width=420 height=180></embed></object>',
-			'expected'      => 'https://graph.facebook.com/2560032632599/picture',
-			'expected_hash' => '619591ec126ad889799ad992a227c75e',
-			'name'          => 'Flash Embed'
-		),
-		array(
-			'markup'        => '<iframe src="https://www.facebook.com/video/embed?video_id=2560032632599" width="960" height="720" frameborder="0"></iframe>',
-			'expected'      => 'https://graph.facebook.com/2560032632599/picture',
-			'expected_hash' => '619591ec126ad889799ad992a227c75e',
-			'name'          => 'iFrame Embed'
-		),
-	);
+	public static function get_test_cases() {
+		return array(
+			array(
+				'markup'        => '<object width=420 height=180><param name=allowfullscreen value=true></param><param name=allowscriptaccess value=always></param><param name=movie value="http://www.facebook.com/v/2560032632599"></param><embed src="http://www.facebook.com/v/2560032632599" type="application/x-shockwave-flash" allowscriptaccess=always allowfullscreen=true width=420 height=180></embed></object>',
+				'expected'      => 'https://graph.facebook.com/2560032632599/picture',
+				'expected_hash' => 'fa4a6b4b7a0f056a7558dc9ccacb34c3',
+				'name'          => __( 'Flash Embed', 'video-thumbnails' )
+			),
+			array(
+				'markup'        => '<iframe src="https://www.facebook.com/video/embed?video_id=2560032632599" width="960" height="720" frameborder="0"></iframe>',
+				'expected'      => 'https://graph.facebook.com/2560032632599/picture',
+				'expected_hash' => 'fa4a6b4b7a0f056a7558dc9ccacb34c3',
+				'name'          => __( 'iFrame Embed', 'video-thumbnails' )
+			),
+		);
+	}
 
 }
 
