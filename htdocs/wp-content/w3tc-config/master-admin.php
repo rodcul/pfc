@@ -18,7 +18,7 @@ return array(
 	),
 	'notes.minify_error' => false,
 	'minify.error.last' => '',
-	'minify.error.notification' => '',
+	'minify.error.notification' => 'admin,email',
 	'minify.error.notification.last' => 0,
 	'minify.error.file' => '',
 	'track.maxcdn_signup' => 0,
@@ -27,6 +27,7 @@ return array(
 	'notes.maxcdn_whitelist_ip' => true,
 	'notes.remove_w3tc' => false,
 	'notes.hide_extensions' => array(
+		0 => 'wordpress-seo',
 	),
-	'evaluation.reminder' => 0,
+	'evaluation.reminder' => 1401695682,
 );
