@@ -14,3 +14,9 @@ El objetivo es que sirva para crear un portal de contenidos de un área de conoc
 Se ha optado por utilizar Trello como herramienta de gestión del proyecto a nivel de historias de usuario
 
 https://trello.com/b/l2slVDtE/pfc
+
+## Integración Contínua: Travis CI
+
+[![Build Status](https://secure.travis-ci.org/rodcul/pfc.png?branch=master)](http://travis-ci.org/rodcul/pfc)
+
+http://travis-ci.org/rodcul/pfc
