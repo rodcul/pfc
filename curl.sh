@@ -2,7 +2,6 @@
 
 while read query
 do
-    content=$(curl "${query}")
-    echo $query
-    echo $content >> output.txt
+    	echo $query
+	curl "${query}" > /dev/null
 done 
