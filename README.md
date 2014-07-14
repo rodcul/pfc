@@ -14,3 +14,7 @@ El objetivo es que sirva para crear un portal de contenidos de un área de conoc
 Se ha optado por utilizar Trello como herramienta de gestión del proyecto a nivel de historias de usuario
 
 https://trello.com/b/l2slVDtE/pfc
+
+## Licencia
+
+Copyright (c) 2014 Rodney Patrick Cullen. Ver el archivo LICENSE para derechos y limitaciones de la licencia (MIT).
